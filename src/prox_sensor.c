@@ -40,4 +40,31 @@ int main(){
         close(fd);
         return 1;
     }
+
+    uint32_t trig_reg = gpio[GPSEL2 / 4]; //Access GPSEL2 register
+
+    //Sensor intialise, clear GPIO register and set to output 
+    trig_reg &= ~(7 << 9); //Clear 3 bit register assigned to GPIO 23, physical pin 16, TRIG function on HC-SR04
+    trig_reg |= (1 << 9); //Assign TRIG as output by setting 3 bit register to 001
+    gpio[GPSEL2 / 4] = trig_reg; //Update GPIO register
+
+    //Repeat process for ECHO register
+    uint32_t echo_reg = gpio[GPSEL2 / 4]; //Access GPSEL2 register
+
+    echo_reg &= ~(7 << 12); //Clear 3 bit register assigned to GPIO 24, physical pin 18, ECHO function on HC-SR04
+    echo_reg |= (1 << 12); //Assign ECHO as output by setting 3 bit register to 001
+    gpio[GPSEL2 / 4] = echo_reg; //Update GPIO register
+
+    //LED
+    uint32_t led_reg = gpio[GPSEL1 / 4]; //Use GPSEL1 for GPIO 10-19 (LED = 17)
+
+    led_reg &= ~(7 << 21);
+    led_reg |= (1 << 21);
+    gpio[GPSEL1 / 4] = led_reg;
+    
+    //Sensor Initialise
+    gpio[GPSET0 / 4] = (1 << 23);
+    usleep(500000);
+
+    
 }
