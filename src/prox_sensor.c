@@ -3,6 +3,7 @@
 #include <unistd.h> //Low-level system calls like close() and usleep()
 #include <fcntl.h> //Used for open() on /dev/gpiomem
 #include <sys/mman.h> //Memory management for mmap() and munmap()
+#include "time.h"
 
 #define GPIO_OFFSET 0x0 //Storing /dev/gpiomem in virtual memory via mmap()
 #define MEM_BLOCK 4096 //4KB memory block for storing register data
@@ -66,5 +67,5 @@ int main(){
     gpio[GPSET0 / 4] = (1 << 23);
     usleep(500000);
 
-    
+
 }

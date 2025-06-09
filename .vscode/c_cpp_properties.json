@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "name": "Raspberry Pi",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "/usr/include",
+        "/usr/include/linux",
+        "/usr/include/c++/12",                          // GCC 12 standard library
+        "/usr/include/arm-linux-gnueabihf"              // ARM-specific headers
+      ],
+      "defines": [],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "linux-gcc-arm",
+      "browse": {
+        "path": [
+          "/usr/include",
+          "/usr/include/linux",
+          "/usr/include/arm-linux-gnueabihf",
+          "${workspaceFolder}"
+        ],
+        "limitSymbolsToIncludedHeaders": true
+      }
+    }
+  ],
+  "version": 4
+}
