@@ -3,7 +3,7 @@
 #include <unistd.h> //Low-level system calls like close() and usleep()
 #include <fcntl.h> //Used for open() on /dev/gpiomem
 #include <sys/mman.h> //Memory management for mmap() and munmap()
-#include "time.h"
+#include "tick.h"
 
 #define GPIO_OFFSET 0x0 //Storing /dev/gpiomem in virtual memory via mmap()
 #define MEM_BLOCK 4096 //4KB memory block for storing register data
@@ -31,7 +31,7 @@ int main(){
     //32 bit pointer to gpiomem for manipulating GPIO register via mmap()
     volatile uint32_t *gpio = mmap(NULL,                    //Kernel chooses virtual memory address
                                    MEM_BLOCK,               //Size of data to be mapped
-                                   PROT_READ | PROT_READ,   //Allows data to be read and written to
+                                   PROT_READ | PROT_WRITE,   //Allows data to be read and written to
                                    MAP_SHARED,              //Other processes can use data
                                    fd,                      //File descriptor (gpiomem)
                                    GPIO_OFFSET);            //Start of GPIO address within gpiomem (0x0)
@@ -49,11 +49,10 @@ int main(){
     trig_reg |= (1 << 9); //Assign TRIG as output by setting 3 bit register to 001
     gpio[GPSEL2 / 4] = trig_reg; //Update GPIO register
 
-    //Repeat process for ECHO register
+    //Repeat process for ECHO register but setting as input
     uint32_t echo_reg = gpio[GPSEL2 / 4]; //Access GPSEL2 register
 
     echo_reg &= ~(7 << 12); //Clear 3 bit register assigned to GPIO 24, physical pin 18, ECHO function on HC-SR04
-    echo_reg |= (1 << 12); //Assign ECHO as output by setting 3 bit register to 001
     gpio[GPSEL2 / 4] = echo_reg; //Update GPIO register
 
     //LED
@@ -67,5 +66,39 @@ int main(){
     gpio[GPSET0 / 4] = (1 << 23);
     usleep(500000);
 
+    uint32_t startTick, endTick;
 
+    for(int i = 0; i < 10; i++){
+        
+        gpio[GPSET0 / 4] = (1 << 23);
+        usleep(20);
+        gpio[GPCLR0 / 4] = (1 << 23);
+        
+        
+        while((gpio[GPLEV0 / 4] & (1 << 24)) == 0);
+
+        startTick = getCurrentTick();
+
+        while((gpio[GPLEV0 / 4] & (1 << 24)) != 0);
+
+        endTick = getCurrentTick();
+
+        uint32_t duration = endTick - startTick;
+        float distance_cm = duration / 58.0;
+
+        if (distance_cm < 5){
+            gpio[GPSET0 / 4] = (1 << 17);
+            usleep(500000);
+            gpio[GPCLR0 / 4] = (1 << 17);
+        }
+
+        printf("Measurement %d\n", i+1);
+
+        usleep(1000000);
+    }
+
+    munmap((void *)gpio, MEM_BLOCK);
+    close(fd);
+
+    return 0;
 }
