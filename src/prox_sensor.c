@@ -3,7 +3,7 @@
 #include <unistd.h> //Low-level system calls like close() and usleep()
 #include <fcntl.h> //Used for open() on /dev/gpiomem
 #include <sys/mman.h> //Memory management for mmap() and munmap()
-#include "tick.h"
+#include "tick.h" //Used for getCurrentTick() defined in /utils/tick.c
 
 #define GPIO_OFFSET 0x0 //Storing /dev/gpiomem in virtual memory via mmap()
 #define MEM_BLOCK 4096 //4KB memory block for storing register data
@@ -70,24 +70,23 @@ int main(){
 
     for(int i = 0; i < 10; i++){
         
-        gpio[GPSET0 / 4] = (1 << 23);
-        usleep(20);
-        gpio[GPCLR0 / 4] = (1 << 23);
+        gpio[GPSET0 / 4] = (1 << 23); //Set TRIG to HIGH
+        usleep(20);                   //Short pulse
+        gpio[GPCLR0 / 4] = (1 << 23); //Clear TRIG bits
         
-        
-        while((gpio[GPLEV0 / 4] & (1 << 24)) == 0);
+        while((gpio[GPLEV0 / 4] & (1 << 24)) == 0); //Wait for ECHO level to change
 
-        startTick = getCurrentTick();
+        startTick = getCurrentTick(); //Get tick at change
 
-        while((gpio[GPLEV0 / 4] & (1 << 24)) != 0);
+        while((gpio[GPLEV0 / 4] & (1 << 24)) != 0); //Once change is detected
 
-        endTick = getCurrentTick();
+        endTick = getCurrentTick();                 //Get tick after ECHO is received
 
-        uint32_t duration = endTick - startTick;
-        float distance_cm = duration / 58.0;
+        uint32_t duration = endTick - startTick;    //Formula for calculating distance
+        float distance_cm = duration / 58.8;        //58.8 (rounded up) is time taken (µs) for sound to travel 1cm round trip at 20c
 
         if (distance_cm < 5){
-            gpio[GPSET0 / 4] = (1 << 17);
+            gpio[GPSET0 / 4] = (1 << 17);           //Flash LED when within 5cm proximity to the sensor
             usleep(500000);
             gpio[GPCLR0 / 4] = (1 << 17);
         }
@@ -97,8 +96,8 @@ int main(){
         usleep(1000000);
     }
 
-    munmap((void *)gpio, MEM_BLOCK);
-    close(fd);
+    munmap((void *)gpio, MEM_BLOCK);   //Unmap memory
+    close(fd);                         //Close /dev/gpiomem file
 
     return 0;
 }
