@@ -95,13 +95,15 @@ int main(){
         float distance_cm = duration / 58.8;        //58.8 (rounded up) is time taken (µs) for sound to travel 1cm at 20c
 
         if (distance_cm < 5){
-            gpio[GPCLR0 / 4] = (1 << 27);           //Turn off Green LED when prox warning
-            gpio[GPSET0 / 4] = (1 << 17);           //Flash LED when within 5cm proximity to the sensor
-            usleep(500000);
-            gpio[GPCLR0 / 4] = (1 << 17);
+            for(int j = 0; j<5;j++){
+                gpio[GPSET0 / 4] = (1 << 17);           //Flash LED when within 5cm proximity to the sensor
+                usleep(250000);
+                gpio[GPCLR0 / 4] = (1 << 17);
+                usleep(250000);
+            }
         }
 
-        printf("Measurement %d\n", i+1);
+        printf("Measurement %d\nDistance: %.2f cm\n\n", i+1, distance_cm);
 
         usleep(1000000);
     }
