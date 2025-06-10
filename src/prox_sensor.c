@@ -11,8 +11,8 @@
 //RPI 4 Model B GPIO register addresses 
 //https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf
 
-#define GPSEL1 0x04 //Function select for GPIO pins 10-19 (LED)
-#define GPSEL2 0x08 //Function select for GPIO pins 20-29 (TRIG, ECHO)
+#define GPSEL1 0x04 //Function select for GPIO pins 10-19 (RED LED)
+#define GPSEL2 0x08 //Function select for GPIO pins 20-29 (TRIG, ECHO, GREEN LED)
 #define GPSET0 0x1c //Set GPIO pin output
 #define GPCLR0 0x28 //Clear GPIO pin bits
 #define GPLEV0 0x34 //Read GPIO level
@@ -55,21 +55,30 @@ int main(){
     echo_reg &= ~(7 << 12); //Clear 3 bit register assigned to GPIO 24, physical pin 18, ECHO function on HC-SR04
     gpio[GPSEL2 / 4] = echo_reg; //Update GPIO register
 
-    //LED
-    uint32_t led_reg = gpio[GPSEL1 / 4]; //Use GPSEL1 for GPIO 10-19 (LED = 17)
+    //RED LED 
+    uint32_t rled_reg = gpio[GPSEL1 / 4]; //Use GPSEL1 for GPIO 10-19 (RED LED = 17)
 
-    led_reg &= ~(7 << 21);
-    led_reg |= (1 << 21);
-    gpio[GPSEL1 / 4] = led_reg;
+    rled_reg &= ~(7 << 21);
+    rled_reg |= (1 << 21);
+    gpio[GPSEL1 / 4] = rled_reg;
+
+    //GREEN LED 
+    uint32_t gled_reg = gpio[GPSEL2 / 4]; //Use GPSEL2 for GPIO 20-29 (GREEN LED = 27)
+
+    gled_reg &= ~(7 << 21);
+    gled_reg |= (1 << 21);
+    gpio[GPSEL2 / 4] = gled_reg;
     
     //Sensor Initialise
-    gpio[GPSET0 / 4] = (1 << 23);
+    gpio[GPCLR0 / 4] = (1 << 23);
     usleep(500000);                 //Allow sensor to settle
 
     uint32_t startTick, endTick;
 
     for(int i = 0; i < 10; i++){
         
+        gpio[GPSET0 / 4] = (1 << 27); //Turn on Green LED while program is active
+
         gpio[GPSET0 / 4] = (1 << 23); //Set TRIG to HIGH
         usleep(20);                   //Short pulse
         gpio[GPCLR0 / 4] = (1 << 23); //Clear TRIG bits
@@ -86,6 +95,7 @@ int main(){
         float distance_cm = duration / 58.8;        //58.8 (rounded up) is time taken (µs) for sound to travel 1cm at 20c
 
         if (distance_cm < 5){
+            gpio[GPCLR0 / 4] = (1 << 27);           //Turn off Green LED when prox warning
             gpio[GPSET0 / 4] = (1 << 17);           //Flash LED when within 5cm proximity to the sensor
             usleep(500000);
             gpio[GPCLR0 / 4] = (1 << 17);
@@ -96,6 +106,7 @@ int main(){
         usleep(1000000);
     }
 
+    gpio[GPCLR0 / 4] = (1 << 27);      //Turn off green LED
     munmap((void *)gpio, MEM_BLOCK);   //Unmap memory
     close(fd);                         //Close /dev/gpiomem file
 
