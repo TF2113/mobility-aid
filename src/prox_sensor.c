@@ -14,7 +14,7 @@
 #define GPSEL1 0x04 //Function select for GPIO pins 10-19 (LED)
 #define GPSEL2 0x08 //Function select for GPIO pins 20-29 (TRIG, ECHO)
 #define GPSET0 0x1c //Set GPIO pin output
-#define GPCLR0 0x28 //Clear GPIO pin output
+#define GPCLR0 0x28 //Clear GPIO pin bits
 #define GPLEV0 0x34 //Read GPIO level
 
 //Open GPIO memory register file
@@ -64,7 +64,7 @@ int main(){
     
     //Sensor Initialise
     gpio[GPSET0 / 4] = (1 << 23);
-    usleep(500000);
+    usleep(500000);                 //Allow sensor to settle
 
     uint32_t startTick, endTick;
 
@@ -78,12 +78,12 @@ int main(){
 
         startTick = getCurrentTick(); //Get tick at change
 
-        while((gpio[GPLEV0 / 4] & (1 << 24)) != 0); //Once change is detected
+        while((gpio[GPLEV0 / 4] & (1 << 24)) != 0); //Wait until ECHO level resets to 0
 
         endTick = getCurrentTick();                 //Get tick after ECHO is received
 
         uint32_t duration = endTick - startTick;    //Formula for calculating distance
-        float distance_cm = duration / 58.8;        //58.8 (rounded up) is time taken (µs) for sound to travel 1cm round trip at 20c
+        float distance_cm = duration / 58.8;        //58.8 (rounded up) is time taken (µs) for sound to travel 1cm at 20c
 
         if (distance_cm < 5){
             gpio[GPSET0 / 4] = (1 << 17);           //Flash LED when within 5cm proximity to the sensor
