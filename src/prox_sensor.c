@@ -93,13 +93,16 @@ int main(){
 
         uint32_t duration = endTick - startTick;    //Formula for calculating distance
         float distance_cm = duration / 58.8;        //58.8 (rounded up) is time taken (µs) for sound to travel 1cm at 20c
-
-        if (distance_cm < 5){
-            for(int j = 0; j<5;j++){
+        
+        int numBlink = 20 / distance_cm;
+        int delay = 40000 * distance_cm;
+        
+        if (distance_cm < 15){
+            for(int j = 0; j < numBlink ;j++){
                 gpio[GPSET0 / 4] = (1 << 17);           //Flash LED when within 5cm proximity to the sensor
-                usleep(250000);
+                usleep(delay);
                 gpio[GPCLR0 / 4] = (1 << 17);
-                usleep(250000);
+                usleep(delay);
             }
         }
 
