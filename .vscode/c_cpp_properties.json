@@ -1,28 +1,29 @@
 {
-  "configurations": [
-    {
-      "name": "Raspberry Pi",
-      "includePath": [
-        "${workspaceFolder}/**",
-        "/usr/include",
-        "/usr/include/aarch64-linux-gnu",
-        "/usr/include/c++/12",
-        "/usr/lib/gcc/aarch64-linux-gnu/12/include"
-      ],
-      "defines": [],
-      "compilerPath": "/usr/bin/gcc",
-      "cStandard": "c11",
-      "cppStandard": "c++17",
-      "intelliSenseMode": "linux-gcc-arm64",
-      "browse": {
-        "path": [
-          "/usr/include",
-          "/usr/include/aarch64-linux-gnu",
-          "${workspaceFolder}"
-        ],
-        "limitSymbolsToIncludedHeaders": true
-      }
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "name": "Raspberry Pi",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/include",
+                "/usr/include/aarch64-linux-gnu",
+                "/usr/include/c++/12",
+                "/usr/lib/gcc/aarch64-linux-gnu/12/include",
+                "/usr/include/opencv4"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-arm64",
+            "browse": {
+                "path": [
+                    "/usr/include",
+                    "/usr/include/aarch64-linux-gnu",
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
+        }
+    ],
+    "version": 4
 }
