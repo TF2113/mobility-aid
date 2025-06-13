@@ -130,11 +130,7 @@ int main()
     }
 
     gpio[GPCLR0 / 4] = (1 << 27); // Turn off green LED
-<<<<<<< HEAD
     gpio[GPCLR0 / 4] = (1 << 22);
-=======
-    gpio[GPCLR0 / 4] = (1 << 22); // Fallback to turn off yellow LED if last distance >25cm
->>>>>>> 74903e3 (Add yellow LED for intermediate distance added, refactor GPSEL2 logic to modify all related GPIO at once, code formatted)
     munmap((void *)gpio, MEM_BLOCK); // Unmap memory
     close(fd);                       // Close /dev/gpiomem file
 
