@@ -111,7 +111,6 @@ int main()
                 gpio[GPSET0 / 4] = (1 << 17); // Flash LED when within 5cm proximity to the sensor
                 usleep(delay);
                 gpio[GPCLR0 / 4] = (1 << 17);
-                usleep(delay);
             }
         }
 
