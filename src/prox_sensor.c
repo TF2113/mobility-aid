@@ -4,6 +4,7 @@
 #include <fcntl.h>    //Used for open() on /dev/gpiomem
 #include <sys/mman.h> //Memory management for mmap() and munmap()
 #include "tick.h"     //Used for getCurrentTick() defined in /utils/tick.c
+#include "gpio_functions.h" //Used for GPIO functions defined in /utils/gpio_functions.h
 
 #define GPIO_OFFSET 0x0 // Storing /dev/gpiomem in virtual memory via mmap()
 #define MEM_BLOCK 4096  // 4KB memory block for storing register data

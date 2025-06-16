@@ -7,7 +7,7 @@ CPPFLAGS = $(CFLAGS)
 C_TARGET = builds/mobility-aid
 CPP_TARGET = builds/capture_image
 
-C_SRCS = src/prox_sensor.c src/utils/tick.c
+C_SRCS = src/prox_sensor.c src/utils/tick.c src/utils/gpio_functions.c
 CPP_SRCS = src/cam/capture_image.cpp
 
 OPENCV_CFLAGS := $(shell pkg-config --cflags opencv4)
