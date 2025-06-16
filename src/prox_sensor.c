@@ -9,15 +9,6 @@
 #define GPIO_OFFSET 0x0 // Storing /dev/gpiomem in virtual memory via mmap()
 #define MEM_BLOCK 4096  // 4KB memory block for storing register data
 
-// RPI 4 Model B GPIO register addresses
-// https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf
-
-#define GPSEL1 0x04 // Function select for GPIO pins 10-19 (RED LED)
-#define GPSEL2 0x08 // Function select for GPIO pins 20-29 (TRIG, ECHO, GREEN LED)
-#define GPSET0 0x1c // Set GPIO pin output
-#define GPCLR0 0x28 // Clear GPIO pin bits
-#define GPLEV0 0x34 // Read GPIO level
-
 //GPIO declarations
 #define RED_LED 17
 #define TRIG 23
@@ -26,7 +17,6 @@
 #define GREEN_LED 27
 
 // Open GPIO memory register file
-
 int main() {
 
     int fd = open("/dev/gpiomem", O_RDWR | O_SYNC); // READ & WRITE perms and SYNC to prevent program from continuing before writes are finished
@@ -59,11 +49,11 @@ int main() {
     //Set ECHO to input
     gpioSetFunction(gpio, ECHO, 0b000);
 
+    uint32_t startTick, endTick;
+    
     // Sensor Initialise
     gpioClear0(gpio, TRIG);
     usleep(500000); // Allow sensor to settle
-
-    uint32_t startTick, endTick;
 
     for (int i = 0; i < 100; i++) {
 
