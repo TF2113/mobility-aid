@@ -1,5 +1,8 @@
 #include <stdint.h>
 
+// RPI 4 Model B GPIO register addresses
+// https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf
+
 void gpioSetFunction(volatile uint32_t *gpio, int gpioPin, int functionCode)
 {
     int regIndex = gpioPin / 10;        //Either 1 or 2 for Raspberry Pi 4 Pins
