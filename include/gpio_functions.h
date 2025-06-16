@@ -13,6 +13,6 @@ void gpioSet0(volatile uint32_t *gpio, int gpioPin);
 void gpioClear0(volatile uint32_t *gpio, int gpioPin);
 
 // Read GPIO pin level (returns 0 or 1)
-int gpioRead0(volatile uint32_t *gpio, int gpioPin);
+int gpioLevel0(volatile uint32_t *gpio, int gpioPin);
 
 #endif

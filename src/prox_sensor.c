@@ -18,15 +18,20 @@
 #define GPCLR0 0x28 // Clear GPIO pin bits
 #define GPLEV0 0x34 // Read GPIO level
 
+//GPIO declarations
+#define RED_LED 17
+#define TRIG 23
+#define ECHO 24
+#define YELLOW_LED 22
+#define GREEN_LED 27
+
 // Open GPIO memory register file
 
-int main()
-{
+int main() {
 
     int fd = open("/dev/gpiomem", O_RDWR | O_SYNC); // READ & WRITE perms and SYNC to prevent program from continuing before writes are finished
 
-    if (fd < 0)
-    {
+    if (fd < 0) {
         perror("Access to gpiomem failed\n");
         return 1;
     }
@@ -39,64 +44,39 @@ int main()
                                    fd,                     // File descriptor (gpiomem)
                                    GPIO_OFFSET);           // Start of GPIO address within gpiomem (0x0)
 
-    if (gpio == MAP_FAILED)
-    {
+    if (gpio == MAP_FAILED) {
         perror("Failed to map gpio registers\n");
         close(fd);
         return 1;
     }
 
-    // RED LED
-    uint32_t rled_reg = gpio[GPSEL1 / 4]; // Use GPSEL1 for GPIO 10-19 (RED LED = 17)
+    //Set GPIO to output
+    gpioSetFunction(gpio, RED_LED, 0b001);
+    gpioSetFunction(gpio, GREEN_LED, 0b001);
+    gpioSetFunction(gpio, YELLOW_LED, 0b001);
+    gpioSetFunction(gpio, TRIG, 0b001);
 
-    rled_reg &= ~(7 << 21);
-    rled_reg |= (1 << 21);
-    gpio[GPSEL1 / 4] = rled_reg;
-
-    uint32_t gpsel2 = gpio[GPSEL2 / 4]; // Access GPSEL2 register
-    // Sensor intialise, clear GPIO register and set to output
-    gpsel2 &= ~(7 << 9); // Clear 3 bit register assigned to GPIO 23, physical pin 16, TRIG function on HC-SR04
-    gpsel2 |= (1 << 9);  // Assign TRIG as output by setting 3 bit register to 001
-
-    // Repeat process for ECHO register but setting as input
-    gpsel2 &= ~(7 << 12); // Clear 3 bit register assigned to GPIO 24, physical pin 18, ECHO function on HC-SR04
-
-    // YELLOW LED
-    // Use GPSEL2 for GPIO 20-29 (YELLOW LED = 25)
-    gpsel2 &= ~(7 << 6);
-    gpsel2 |= (1 << 6);
-
-    // GREEN LED
-    // Use GPSEL2 for GPIO 20-29 (GREEN LED = 27)
-    gpsel2 &= ~(7 << 21);
-    gpsel2 |= (1 << 21);
-
-    // Write back to gpiomem
-    gpio[GPSEL2 / 4] = gpsel2;
+    //Set ECHO to input
+    gpioSetFunction(gpio, ECHO, 0b000);
 
     // Sensor Initialise
-    gpio[GPCLR0 / 4] = (1 << 23);
+    gpioClear0(gpio, TRIG);
     usleep(500000); // Allow sensor to settle
 
     uint32_t startTick, endTick;
 
-    for (int i = 0; i < 100; i++)
-    {
+    for (int i = 0; i < 100; i++) {
 
-        gpio[GPSET0 / 4] = (1 << 27); // Turn on Green LED while program is active
+        gpioSet0(gpio, GREEN_LED); // Turn on Green LED while program is active
 
-        gpio[GPSET0 / 4] = (1 << 23); // Set TRIG to HIGH
-        usleep(20);                   // Short pulse
-        gpio[GPCLR0 / 4] = (1 << 23); // Clear TRIG bits
+        gpioSet0(gpio, TRIG); // Set TRIG to HIGH
+        usleep(20); // Short pulse
+        gpioClear0(gpio, TRIG); // Clear TRIG bits
 
-        while ((gpio[GPLEV0 / 4] & (1 << 24)) == 0)
-            ; // Wait for ECHO level to change
-
+        while (gpioLevel0(gpio, ECHO) == 0); // Wait for ECHO level to change
         startTick = getCurrentTick(); // Get tick at change
 
-        while ((gpio[GPLEV0 / 4] & (1 << 24)) != 0)
-            ; // Wait until ECHO level resets to 0
-
+        while (gpioLevel0(gpio, ECHO) != 0); // Wait until ECHO level resets to 0
         endTick = getCurrentTick(); // Get tick after ECHO is received
 
         uint32_t duration = endTick - startTick; // Formula for calculating distance
@@ -105,32 +85,27 @@ int main()
         int numBlink = 20 / distance_cm;
         int delay = 40000 * distance_cm;
 
-        if (distance_cm < 15)
-        {
-            for (int j = 0; j < numBlink; j++)
-            {
-                gpio[GPSET0 / 4] = (1 << 17); // Flash LED when within 5cm proximity to the sensor
+        if (distance_cm < 15) {
+            for (int j = 0; j < numBlink; j++) {
+                gpioSet0(gpio, RED_LED); // Flash LED when within 5cm proximity to the sensor
                 usleep(delay);
-                gpio[GPCLR0 / 4] = (1 << 17);
+                gpioClear0(gpio, RED_LED);
+                usleep(delay);
             }
         }
 
-        if (distance_cm < 25)
-        {
-            gpio[GPSET0 / 4] = (1 << 22);
-        }
-        else
-        {
-            gpio[GPCLR0 / 4] = (1 << 22);
+        if (distance_cm < 25){
+            gpioSet0(gpio, YELLOW_LED);
+        } else {
+            gpioClear0(gpio, YELLOW_LED);
         }
 
         printf("Measurement %d\nDistance: %.2f cm\n\n", i + 1, distance_cm);
-
         usleep(100000);
     }
 
-    gpio[GPCLR0 / 4] = (1 << 27); // Turn off green LED
-    gpio[GPCLR0 / 4] = (1 << 22);
+    gpioClear0(gpio, GREEN_LED); // Turn off green LED
+    gpioClear0(gpio, YELLOW_LED); //Turn off yellow LED in case last reading <20cm
     munmap((void *)gpio, MEM_BLOCK); // Unmap memory
     close(fd);                       // Close /dev/gpiomem file
 

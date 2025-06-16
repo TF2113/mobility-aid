@@ -1,8 +1,5 @@
 #include <stdint.h>
 
-/*
-    Receives pointer to GPIO registers, GPIO pin to modify and the register function code to apply
-*/
 void gpioSetFunction(volatile uint32_t *gpio, int gpioPin, int functionCode)
 {
     int regIndex = gpioPin / 10;        //Either 1 or 2 for Raspberry Pi 4 Pins
@@ -21,5 +18,5 @@ void gpioClear0(volatile uint32_t *gpio, int gpioPin){
 }
 
 int gpioLevel0(volatile uint32_t *gpio, int gpioPin){
-    return (gpio[0x34 / 4] = (1 << gpioPin)) != 0; //GPLEV0
+    return (gpio[0x34 / 4] & (1 << gpioPin)) != 0; //GPLEV0
 }
