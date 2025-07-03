@@ -79,7 +79,7 @@ int main() {
 
         if (distance_cm < 15) {
             for (int j = 0; j < numBlink; j++) {
-                gpioSet0(gpio, RED_LED); // Flash LED when within 5cm proximity to the sensor
+                gpioSet0(gpio, RED_LED); // Flash LED and vibrate motor when within 15cm proximity to the sensor corresponding to the distance, quickens as the distance decreases
                 gpioSet0(gpio, VIB_MOTOR);
                 usleep(delay);
                 gpioClear0(gpio, VIB_MOTOR);
