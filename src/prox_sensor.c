@@ -10,6 +10,7 @@
 #define MEM_BLOCK 4096  // 4KB memory block for storing register data
 
 //GPIO declarations
+#define VIB_MOTOR 13
 #define RED_LED 17
 #define TRIG 23
 #define ECHO 24
@@ -41,6 +42,7 @@ int main() {
     }
 
     //Set GPIO to output
+    gpioSetFunction(gpio, VIB_MOTOR, 0b001);
     gpioSetFunction(gpio, RED_LED, 0b001);
     gpioSetFunction(gpio, GREEN_LED, 0b001);
     gpioSetFunction(gpio, YELLOW_LED, 0b001);
@@ -78,7 +80,9 @@ int main() {
         if (distance_cm < 15) {
             for (int j = 0; j < numBlink; j++) {
                 gpioSet0(gpio, RED_LED); // Flash LED when within 5cm proximity to the sensor
+                gpioSet0(gpio, VIB_MOTOR);
                 usleep(delay);
+                gpioClear0(gpio, VIB_MOTOR);
                 gpioClear0(gpio, RED_LED);
                 usleep(delay);
             }
