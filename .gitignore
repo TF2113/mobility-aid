@@ -1,2 +1,3 @@
 /builds
-/ml/models/ncnn-include
+/include/ncnn-include
+/include/libncnn.a
