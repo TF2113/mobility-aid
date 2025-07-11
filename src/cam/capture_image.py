@@ -27,6 +27,8 @@ def run_inference(model, image_path: str, count):
             conf = box.conf[0]
             label = model.names[cls]
             print(f"Detected: {label} (conf: {conf:.3f})")
+            if label == "ped_green" and conf > 0.5:
+                subprocess.run(["./builds/vibrate"])
 
 def main():
     model = YOLO('./ml/models/best.pt')

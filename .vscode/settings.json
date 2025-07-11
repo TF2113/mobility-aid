@@ -75,6 +75,7 @@
         "timer": "cpp",
         "future": "cpp",
         "cfenv": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "stdio.h": "c"
     }
 }
