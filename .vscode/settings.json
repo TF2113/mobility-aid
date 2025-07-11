@@ -63,6 +63,18 @@
         "thread": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "forward_list": "cpp",
+        "unordered_set": "cpp",
+        "buffer": "cpp",
+        "executor": "cpp",
+        "internet": "cpp",
+        "io_context": "cpp",
+        "netfwd": "cpp",
+        "socket": "cpp",
+        "timer": "cpp",
+        "future": "cpp",
+        "cfenv": "cpp",
+        "variant": "cpp"
     }
 }
