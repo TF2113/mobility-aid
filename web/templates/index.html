@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Mobility Aid Config Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <h1>Mobility Aid Configuration</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <label>
+            Proximity Vibration Distance Threshold (cm):
+            <input type="number" name="prox_vibrate" min="2" max="200" value="{{ config.prox_vibrate }}" required>
+        </label>
+
+        <label>
+            Proximity LED Warning Distance Threshold (cm):
+            <input type="number" name="prox_yellow_led" min="2" max="200" value="{{ config.prox_yellow_led }}" required>
+        </label>
+
+        <label>
+            Camera Enabled:
+            <input type="checkbox" name="camera_enabled" value="1" {% if config.camera_enabled %}checked{% endif %}>
+        </label>
+
+        <button type="submit">Save Configuration</button>
+    </form>
+</body>
+
+</html>
