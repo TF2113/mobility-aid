@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
+from save_config import save_to_config
 
 app = Flask(__name__)
 app.secret_key = "devkey321"
@@ -23,6 +24,7 @@ def dashboard():
             if config["prox_yellow_led"] <= config["prox_vibrate"]:
                 flash("Intermediate distance must be greater than minimum distance.", "danger")
             else:
+                save_to_config(config)
                 flash("Configuration updated successfully!", "success")
         except Exception as e:
             flash(f"Error updating configuration: {e}", "danger")
