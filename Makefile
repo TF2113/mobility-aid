@@ -7,7 +7,7 @@ CFLAGS = -Wall -Wextra -O2 -Iinclude -Isrc/utils
 C_TARGET = builds/mobility-aid
 VIB_TARGET = builds/vibrate
 
-C_SRCS = src/prox_sensor.c src/utils/tick.c src/utils/gpio_functions.c src/config_loader.c
+C_SRCS = src/prox_sensor.c src/utils/tick.c src/utils/gpio_functions.c src/utils/config_loader.c
 VIB_SRCS = src/vibrate.c src/utils/gpio_functions.c
 
 # C program
@@ -16,7 +16,7 @@ mobility-aid:
 
 vibrate:
 	$(CC) $(CFLAGS) -o $(VIB_TARGET) $(VIB_SRCS)
-	
+
 # Clean build files
 clean:
 	rm -f $(C_TARGET)

@@ -17,7 +17,7 @@ void load_config(const char* filename) {
     char line[100];
     while (fgets(line, sizeof(line), file)){
         if (sscanf(line, "prox_vibrate=%d", &prox_vibrate)==1) continue;
-        if (sscanf(line, "prox_yellow_led=%d", prox_yellow_led)==1) continue;
-        if (sscanf(line, "camera_enabled=%d", camera_enabled)==1) continue;
+        if (sscanf(line, "prox_yellow_led=%d", &prox_yellow_led)==1) continue;
+        if (sscanf(line, "camera_enabled=%d", &camera_enabled)==1) continue;
     }
 }
