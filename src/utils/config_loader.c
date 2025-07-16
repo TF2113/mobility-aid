@@ -20,4 +20,6 @@ void load_config(const char* filename) {
         if (sscanf(line, "prox_yellow_led=%d", &prox_yellow_led)==1) continue;
         if (sscanf(line, "camera_enabled=%d", &camera_enabled)==1) continue;
     }
+
+    fclose(file);
 }
