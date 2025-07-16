@@ -5,6 +5,7 @@
 #include <sys/mman.h> //Memory management for mmap() and munmap()
 #include "tick.h"     //Used for getCurrentTick() defined in /utils/tick.c
 #include "gpio_functions.h" //Used for GPIO functions defined in /utils/gpio_functions.h
+#include "config_loader.h" //Used for loading config files
 
 #define GPIO_OFFSET 0x0 // Storing /dev/gpiomem in virtual memory via mmap()
 #define MEM_BLOCK 4096  // 4KB memory block for storing register data
@@ -17,8 +18,12 @@
 #define YELLOW_LED 22
 #define GREEN_LED 27
 
+void load_config(const char *filename);
+
 // Open GPIO memory register file
 int main() {
+
+    load_config("./src/configs/config.txt");
 
     int fd = open("/dev/gpiomem", O_RDWR | O_SYNC); // READ & WRITE perms and SYNC to prevent program from continuing before writes are finished
 
@@ -74,10 +79,10 @@ int main() {
         uint32_t duration = endTick - startTick; // Formula for calculating distance
         float distance_cm = duration / 58.8;     // 58.8 (rounded up) is time taken (µs) for sound to travel 1cm at 20c
 
-        int numBlink = 20 / distance_cm;
+        int numBlink = prox_vibrate / distance_cm;
         int delay = 40000 * distance_cm;
 
-        if (distance_cm < 15) {
+        if (distance_cm < prox_vibrate) {
             for (int j = 0; j < numBlink; j++) {
                 gpioSet0(gpio, RED_LED); // Flash LED and vibrate motor when within 15cm proximity to the sensor corresponding to the distance, quickens as the distance decreases
                 gpioSet0(gpio, VIB_MOTOR);
@@ -88,7 +93,7 @@ int main() {
             }
         }
 
-        if (distance_cm < 25){
+        if (distance_cm < prox_yellow_led){
             gpioSet0(gpio, YELLOW_LED);
         } else {
             gpioClear0(gpio, YELLOW_LED);
