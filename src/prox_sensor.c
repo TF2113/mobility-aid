@@ -33,7 +33,7 @@ void load_config(const char *filename);
 int main() {
 
     signal(SIGINT, handle_signal);  // Catch Ctrl+C
-    signal(SIGTERM, handle_signal);
+    signal(SIGTERM, handle_signal); // Allow program to be terminated via python terminate
     load_config("./src/configs/config.txt");
 
     int fd = open("/dev/gpiomem", O_RDWR | O_SYNC); // READ & WRITE perms and SYNC to prevent program from continuing before writes are finished
