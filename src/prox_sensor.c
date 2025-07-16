@@ -1,5 +1,7 @@
 #include <stdio.h>    //Standard library for input/output, used for perror()
 #include <stdint.h>   //Used for uint32_t, key for memory management
+#include <signal.h>
+#include <stdbool.h>
 #include <unistd.h>   //Low-level system calls like close() and usleep()
 #include <fcntl.h>    //Used for open() on /dev/gpiomem
 #include <sys/mman.h> //Memory management for mmap() and munmap()
@@ -18,11 +20,20 @@
 #define YELLOW_LED 22
 #define GREEN_LED 27
 
+volatile bool running = true;
+
+void handle_signal(int sig) {
+    (void) sig;
+    running = false;
+}
+
 void load_config(const char *filename);
 
 // Open GPIO memory register file
 int main() {
 
+    signal(SIGINT, handle_signal);  // Catch Ctrl+C
+    signal(SIGTERM, handle_signal);
     load_config("./src/configs/config.txt");
 
     int fd = open("/dev/gpiomem", O_RDWR | O_SYNC); // READ & WRITE perms and SYNC to prevent program from continuing before writes are finished
@@ -62,8 +73,9 @@ int main() {
     gpioClear0(gpio, TRIG);
     usleep(500000); // Allow sensor to settle
 
-    for (int i = 0; i < 100; i++) {
-
+    int i = 0;
+    while(running) {
+        i++;
         gpioSet0(gpio, GREEN_LED); // Turn on Green LED while program is active
 
         gpioSet0(gpio, TRIG); // Set TRIG to HIGH
@@ -105,6 +117,8 @@ int main() {
 
     gpioClear0(gpio, GREEN_LED); // Turn off green LED
     gpioClear0(gpio, YELLOW_LED); //Turn off yellow LED in case last reading <20cm
+    gpioClear0(gpio, RED_LED);
+    gpioClear0(gpio, VIB_MOTOR);
     munmap((void *)gpio, MEM_BLOCK); // Unmap memory
     close(fd);                       // Close /dev/gpiomem file
 
