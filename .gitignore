@@ -1,3 +1,4 @@
 /builds
 /.vscode
+/src/configs
 /web/__pycache__

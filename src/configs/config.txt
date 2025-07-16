@@ -1,3 +1,0 @@
-prox_vibrate=15
-prox_yellow_led=25
-camera_enabled=1
