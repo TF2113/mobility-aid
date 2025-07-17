@@ -1,0 +1,87 @@
+# 👁️‍🗨️ Mobility Aid for Visually Impaired Users
+
+A low-cost embedded system designed to assist visually impaired individuals using real-time **proximity sensing** and **traffic light recognition**. Built on a Raspberry Pi, the system integrates ultrasonic sensors, a camera, and a lightweight machine learning model (YOLOv11n) to detect environmental conditions and provide haptic feedback.
+
+---
+
+## 📌 Overview
+
+This mobility aid project helps users safely navigate streets, particularly at pedestrian crossings. The system combines:
+
+- **Ultrasonic sensing** to detect nearby obstacles
+- **Traffic light recognition** using a camera and an efficient YOLOv11n model
+- **Feedback mechanisms** vibration triggered based on proximity and light state
+
+---
+
+## 📁 Key File Structure
+
+```
+mobility-aid/
+│
+├── include/                  # C header files
+│   ├── config_loader.h       # Loads external config values
+│   ├── gpio_functions.h      # GPIO pin setup and control
+│   └── tick.h                # Timing utilities
+│
+├── src/                      # C source files
+│   ├── configs/              # Config generate by web app
+│   │   └── config.txt
+│   ├── prox_sensor.c         # Ultrasonic sensor and control loop
+│   └── start.py              # Orchestrates all components (C binary, ML, server)               
+│
+├── ml/                       # Machine learning module
+│   ├── augmentation.ipynb    # Data augmentation and preprocessing
+│   ├── train_model.ipynb     # YOLOv11n training logic
+│   └── models/
+│       └── best.pt           # Trained YOLOv11n model weights
+│
+├── web/                      # Web interface (Flask app)
+│   └── app.py                # Local dashboard
+│
+├── Makefile                  # Compiles the C code
+├── .gitignore
+└── README.md                 
+```
+
+---
+
+## 🚀 Features
+
+- 📡 **Ultrasonic Sensing**  
+  Detects objects and measures distance with HC-SR04 sensor.
+
+- 🧠 **Traffic Light Recognition (YOLOv11n)**  
+  Recognizes red/green pedestrian and traffic lights from a camera feed.
+
+- 🔊 **Feedback System**  
+  Triggers vibration when objects are too close or crossing is unsafe.
+
+- ⚙️ **Modular Design**  
+  Split into embedded C for performance and Python for AI tasks.
+
+- 🪛 **Easily Configurable**  
+  Adjust logic thresholds via external config files.
+
+---
+
+## 🧠 Machine Learning
+
+- **Model:** YOLOv11n (Ultralytics)
+- **Dataset:** Custom images gathered and augmented to increase dataset size
+- **Use Case:** Detect green/red pedestrian signals in real time
+- **Output:** Torch `.pt` model located at `ml/models/best.pt`
+- **Trained Using:**  
+  - `augmentation.ipynb`: Image resizing, color shifts, flips  
+  - `train_model.ipynb`: Fine-tuning YOLOv11n with labeled traffic light data
+
+## 🖥️ Requirements
+
+### Hardware
+
+- Raspberry Pi 4 (or newer)
+- HC-SR04 Ultrasonic sensor
+- Pi Camera Module
+- Vibration motor or buzzer
+
+---
