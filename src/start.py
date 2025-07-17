@@ -4,6 +4,7 @@ import os
 import threading
 
 config_path = "./src/configs/config.txt"
+img_path = "./builds/captures/image0.jpg"
 inference = None
 
 def process_changes(file_path):
@@ -19,6 +20,10 @@ def process_changes(file_path):
             inference = subprocess.Popen(["python", "src/cam/inference.py"])
         elif disabled and inference is not None:
             print("[CONFIG] Inference disabled — stopping...")
+            if os.path.exists(img_path):
+                os.remove(img_path)
+            else:
+                print("Image not found")
             inference.terminate()
             inference = None
 
@@ -48,6 +53,10 @@ try:
     while True:
         time.sleep(1)  # Keep the main thread alive while others run
 except KeyboardInterrupt:
+    if os.path.exists(img_path):
+        os.remove(img_path)
+    else:
+        print("Image not found")
     server.terminate()
     mobility.terminate()
     print("Program terminated.")
