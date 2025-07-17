@@ -8,14 +8,18 @@
 </head>
 
 <body>
-    <h1>Mobility Aid Configuration</h1>
+    <div class="heading">
+        <img class="frog" src="{{ url_for('static', filename='frog-svgrepo-com.svg') }}"
+            width="72" height="72">
+        <h1 class="title">Mobility Aid</h1>
+    </div>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="flash-{{ category }}">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="flash-{{ category }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
     {% endwith %}
 
     <form method="POST">
