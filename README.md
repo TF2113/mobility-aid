@@ -1,3 +1,5 @@
+<h1 align="center">Huia Echo 🐸</h1>
+
 # 👁️‍🗨️ Mobility Aid for Visually Impaired Users
 
 A low-cost embedded system designed to assist visually impaired individuals using real-time **proximity sensing** and **traffic light recognition**. Built on a Raspberry Pi, the system integrates ultrasonic sensors, a camera, and a lightweight machine learning model (YOLOv11n) to detect environmental conditions and provide haptic feedback.
