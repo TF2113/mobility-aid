@@ -1,18 +1,38 @@
-/* Reset some defaults */
 * {
     box-sizing: border-box;
 }
 
+html,
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     background: #f5f7fa;
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
     max-width: 480px;
-    margin: 50px auto;
+    width: 90%;
     padding: 20px 30px;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     background-color: #fff;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
 h1 {
@@ -99,8 +119,43 @@ button:hover {
 }
 
 @media (max-width: 520px) {
-    body {
-        margin: 20px 15px;
-        padding: 15px 20px;
+    .container {
+        max-width: 90%;
+        padding: 20px 25px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 28px;
+    }
+
+    label {
+        font-size: 1.3rem;
+        margin-bottom: 18px;
+    }
+
+    input[type="number"] {
+        font-size: 1.3rem;
+        padding: 14px 18px;
+        border-width: 1.8px;
+        border-radius: 8px;
+    }
+
+    input[type="checkbox"] {
+        transform: scale(1.7);
+        margin-left: 12px;
+    }
+
+    button {
+        font-size: 1.5rem;
+        padding: 18px 0;
+        border-radius: 10px;
+        margin-top: 40px;
+    }
+
+    .flash-success,
+    .flash-danger {
+        font-size: 1.3rem;
+        padding: 18px 20px;
     }
 }

@@ -3,43 +3,46 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Mobility Aid Config Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body>
-    <div class="heading">
-        <img class="frog" src="{{ url_for('static', filename='frog-svgrepo-com.svg') }}"
-            width="72" height="72">
-        <h1 class="title">Mobility Aid</h1>
+    <div class= "container">
+        <div class="heading">
+            <img class="frog" src="{{ url_for('static', filename='frog-svgrepo-com.svg') }}" width="72" height="72">
+            <h1 class="title">Mobility Aid</h1>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <label>
+                Vibration Distance Threshold (cm):
+                <input type="number" name="prox_vibrate" min="2" max="200" value="{{ config.prox_vibrate }}" required>
+            </label>
+
+            <label>
+                LED Warning Distance Threshold (cm):
+                <input type="number" name="prox_yellow_led" min="2" max="200" value="{{ config.prox_yellow_led }}"
+                    required>
+            </label>
+
+            <label>
+                Camera Enabled:
+                <input type="checkbox" name="camera_enabled" value="1" {% if config.camera_enabled %}checked{% endif %}>
+            </label>
+
+            <button type="submit">Save Configuration</button>
+        </form>
     </div>
-
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    {% for category, message in messages %}
-    <div class="flash-{{ category }}">{{ message }}</div>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
-
-    <form method="POST">
-        <label>
-            Vibration Distance Threshold (cm):
-            <input type="number" name="prox_vibrate" min="2" max="200" value="{{ config.prox_vibrate }}" required>
-        </label>
-
-        <label>
-            LED Warning Distance Threshold (cm):
-            <input type="number" name="prox_yellow_led" min="2" max="200" value="{{ config.prox_yellow_led }}" required>
-        </label>
-
-        <label>
-            Camera Enabled:
-            <input type="checkbox" name="camera_enabled" value="1" {% if config.camera_enabled %}checked{% endif %}>
-        </label>
-
-        <button type="submit">Save Configuration</button>
-    </form>
 </body>
 
 </html>
