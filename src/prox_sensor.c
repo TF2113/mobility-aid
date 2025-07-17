@@ -1,10 +1,12 @@
 #include <stdio.h>    //Standard library for input/output, used for perror()
 #include <stdint.h>   //Used for uint32_t, key for memory management
-#include <signal.h>
-#include <stdbool.h>
+#include <signal.h>   //Detect external signals for interupts
+#include <stdbool.h>  //Booleans
 #include <unistd.h>   //Low-level system calls like close() and usleep()
 #include <fcntl.h>    //Used for open() on /dev/gpiomem
+#include <time.h>
 #include <sys/mman.h> //Memory management for mmap() and munmap()
+#include <sys/stat.h> 
 #include "tick.h"     //Used for getCurrentTick() defined in /utils/tick.c
 #include "gpio_functions.h" //Used for GPIO functions defined in /utils/gpio_functions.h
 #include "config_loader.h" //Used for loading config files
@@ -29,13 +31,16 @@ void handle_signal(int sig) {
 
 void load_config(const char *filename);
 
-// Open GPIO memory register file
 int main() {
+
+    struct stat config_stat;
+    time_t last_modified = 0;
+    const char *config_path = "./src/configs/config.txt";
 
     signal(SIGINT, handle_signal);  // Catch Ctrl+C
     signal(SIGTERM, handle_signal); // Allow program to be terminated via python terminate
-    load_config("./src/configs/config.txt");
-
+    
+    // Open GPIO memory register file
     int fd = open("/dev/gpiomem", O_RDWR | O_SYNC); // READ & WRITE perms and SYNC to prevent program from continuing before writes are finished
 
     if (fd < 0) {
@@ -75,6 +80,15 @@ int main() {
 
     int i = 0;
     while(running) {
+
+        if (stat(config_path, &config_stat) == 0) {
+            if (config_stat.st_mtime != last_modified) {
+                last_modified = config_stat.st_mtime;
+                printf("[CONFIG] File updated — reloading...\n");
+                load_config(config_path);
+             }
+        }
+
         i++;
         gpioSet0(gpio, GREEN_LED); // Turn on Green LED while program is active
 
