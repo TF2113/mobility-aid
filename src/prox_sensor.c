@@ -107,7 +107,9 @@ int main() {
 
         int numBlink = prox_vibrate / distance_cm;
         int delay = 40000 * distance_cm;
-
+        
+        printf("Measurement %d\nDistance: %.2f cm\n\n", i + 1, distance_cm);
+        
         if (distance_cm < prox_vibrate) {
             for (int j = 0; j < numBlink; j++) {
                 gpioSet0(gpio, RED_LED); // Flash LED and vibrate motor when within 15cm proximity to the sensor corresponding to the distance, quickens as the distance decreases
@@ -125,7 +127,6 @@ int main() {
             gpioClear0(gpio, YELLOW_LED);
         }
 
-        printf("Measurement %d\nDistance: %.2f cm\n\n", i + 1, distance_cm);
         usleep(100000);
     }
 
