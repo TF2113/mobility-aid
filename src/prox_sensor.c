@@ -112,7 +112,7 @@ int main() {
         
         if (distance_cm < prox_vibrate) {
             for (int j = 0; j < numBlink; j++) {
-                gpioSet0(gpio, RED_LED); // Flash LED and vibrate motor when within 15cm proximity to the sensor corresponding to the distance, quickens as the distance decreases
+                gpioSet0(gpio, RED_LED); // Flash LED and vibrate motor when within proximity to the sensor corresponding to the distance, quickens as the distance decreases
                 gpioSet0(gpio, VIB_MOTOR);
                 usleep(delay);
                 gpioClear0(gpio, VIB_MOTOR);
@@ -131,7 +131,7 @@ int main() {
     }
 
     gpioClear0(gpio, GREEN_LED); // Turn off green LED
-    gpioClear0(gpio, YELLOW_LED); //Turn off yellow LED in case last reading <20cm
+    gpioClear0(gpio, YELLOW_LED); //Turn off yellow LED in case last reading less than threshold
     gpioClear0(gpio, RED_LED);
     gpioClear0(gpio, VIB_MOTOR);
     munmap((void *)gpio, MEM_BLOCK); // Unmap memory

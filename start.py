@@ -17,7 +17,7 @@ def process_changes(file_path):
 
         if enabled and inference is None:
             print("[CONFIG] Inference enabled — starting...")
-            inference = subprocess.Popen(["python", "src/cam/inference.py"])
+            inference = subprocess.Popen(["python", "./src/cam/inference.py"])
         elif disabled and inference is not None:
             print("[CONFIG] Inference disabled — stopping...")
             if os.path.exists(img_path):
@@ -46,7 +46,7 @@ change_thread = threading.Thread(target=detect_changes, args=(config_path,))
 change_thread.daemon = True  # Allow the thread to exit when the main program exits
 change_thread.start()
 
-server = subprocess.Popen(["python", "web/app.py"]) 
+server = subprocess.Popen(["python", "./web/app.py"]) 
 mobility = subprocess.Popen(["./builds/mobility_aid"])
  
 try:
