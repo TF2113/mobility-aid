@@ -46,6 +46,7 @@ change_thread = threading.Thread(target=detect_changes, args=(config_path,))
 change_thread.daemon = True  # Allow the thread to exit when the main program exits
 change_thread.start()
 
+db = subprocess.Popen(["python", "./src/configs/db.py"])
 server = subprocess.Popen(["python", "./web/app.py"]) 
 mobility = subprocess.Popen(["./builds/mobility_aid"])
  
