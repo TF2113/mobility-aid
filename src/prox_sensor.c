@@ -9,7 +9,8 @@
 #include <sys/stat.h> 
 #include "tick.h"     //Used for getCurrentTick() defined in /utils/tick.c
 #include "gpio_functions.h" //Used for GPIO functions defined in /utils/gpio_functions.h
-#include "config_loader.h" //Used for loading config files
+#include <sqlite3.h>
+#include "config_db.h"
 
 #define GPIO_OFFSET 0x0 // Storing /dev/gpiomem in virtual memory via mmap()
 #define MEM_BLOCK 4096  // 4KB memory block for storing register data
@@ -33,9 +34,14 @@ void load_config(const char *filename);
 
 int main() {
 
-    struct stat config_stat;
-    time_t last_modified = 0;
-    const char *config_path = "./src/configs/config.txt";
+    time_t last_config_check = 0;
+    const int config_check_interval = 1;
+    
+    sqlite3 *db;
+    if (sqlite3_open("./src/configs/config.db", &db) != SQLITE_OK) {
+        fprintf(stderr, "Cannot open DB: %s\n", sqlite3_errmsg(db));
+        return 1;
+    }
 
     signal(SIGINT, handle_signal);  // Catch Ctrl+C
     signal(SIGTERM, handle_signal); // Allow program to be terminated via python terminate
@@ -81,12 +87,12 @@ int main() {
     int i = 0;
     while(running) {
 
-        if (stat(config_path, &config_stat) == 0) {
-            if (config_stat.st_mtime != last_modified) {
-                last_modified = config_stat.st_mtime;
-                printf("[CONFIG] File updated — reloading...\n");
-                load_config(config_path);
-             }
+        time_t now = time(NULL);
+        if (now - last_config_check >= config_check_interval) {
+            prox_vibrate = get_int_config(db, "prox_vibrate", prox_vibrate);
+            prox_yellow_led = get_int_config(db, "prox_yellow_led", prox_yellow_led);
+            last_config_check = now;
+            printf("[CONFIG] Loaded prox_vibrate=%d, prox_yellow_led=%d from DB\n", prox_vibrate, prox_yellow_led);
         }
 
         i++;
