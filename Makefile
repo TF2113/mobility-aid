@@ -1,13 +1,13 @@
 CC = gcc
 
 # Compiler Flags
-CFLAGS = -Wall -Wextra -O2 -Iinclude -Isrc/utils
+CFLAGS = -Wall -Wextra -O2 -Iinclude -Isrc/utils 
 
 # Targets and Sources
 C_TARGET = builds/mobility_aid
 VIB_TARGET = builds/vibrate
 
-C_SRCS = src/prox_sensor.c src/utils/tick.c src/utils/gpio_functions.c src/utils/config_loader.c
+C_SRCS = src/prox_sensor.c src/utils/tick.c src/utils/gpio_functions.c src/utils/config_db.c -lsqlite3
 VIB_SRCS = src/vibrate.c src/utils/gpio_functions.c
 
 # C program
