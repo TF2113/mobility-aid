@@ -1,53 +1,61 @@
+from src.configs.db import get_config_value
 import subprocess
 import time
 import os
 import threading
 
-config_path = "./src/configs/config.txt"
 img_path = "./builds/captures/image0.jpg"
 inference = None
+last_camera_enabled = None
 
-def process_changes(file_path):
-    global inference
-    with open(file_path) as config:
-        content = config.readlines()
+def process_changes():
+    global inference, last_camera_enabled
+    val = get_config_value("camera_enabled")
+    if val is None:
+        print("[CONFIG] camera_enabled not set, running as disabled")
+        camera_enabled = False
+    else:
+        camera_enabled = val == "1" or val.lower() == "true"
+        
+    if camera_enabled and inference is None:
+        print("[CONFIG] Inference enabled — starting...")
+        inference = subprocess.Popen(["python", "./src/cam/inference.py"])
+    elif not camera_enabled and inference is not None:
+        print("[CONFIG] Inference disabled — stopping...")
+        if os.path.exists(img_path):
+            os.remove(img_path)
+        else:
+            print("Image not found")
+        inference.terminate()
+        inference = None
 
-        enabled = any(line.strip() == "camera_enabled=1" for line in content)
-        disabled = any(line.strip() == "camera_enabled=0" for line in content)
+def detect_changes(poll_interval=1):
+    global last_camera_enabled
 
-        if enabled and inference is None:
-            print("[CONFIG] Inference enabled — starting...")
-            inference = subprocess.Popen(["python", "./src/cam/inference.py"])
-        elif disabled and inference is not None:
-            print("[CONFIG] Inference disabled — stopping...")
-            if os.path.exists(img_path):
-                os.remove(img_path)
-            else:
-                print("Image not found")
-            inference.terminate()
-            inference = None
+    # Initialize last_camera_enabled to current DB state
+    val = get_config_value("camera_enabled")
+    last_camera_enabled = val == '1' or (val and val.lower() == 'true')
 
-def detect_changes(file_path):
-    last_modified = os.path.getmtime(file_path)
-    
-    process_changes(config_path)
-            
+    # Call once at start to trigger proper state
+    process_changes()
+
     while True:
-        current_modify = os.path.getmtime(file_path)
-        if current_modify != last_modified:
+        val = get_config_value("camera_enabled")
+        current_camera_enabled = val == '1' or (val and val.lower() == 'true')
+
+        if current_camera_enabled != last_camera_enabled:
             print("[CONFIG] Camera status updated — reloading...")
-            process_changes(config_path)
-            last_modified = current_modify
+            process_changes()
+            last_camera_enabled = current_camera_enabled
 
-        time.sleep(1)
+        time.sleep(poll_interval)
 
 
-change_thread = threading.Thread(target=detect_changes, args=(config_path,))
+change_thread = threading.Thread(target=detect_changes)
 change_thread.daemon = True  # Allow the thread to exit when the main program exits
 change_thread.start()
 
-db = subprocess.Popen(["python", "./src/configs/db.py"])
-server = subprocess.Popen(["python", "./web/app.py"]) 
+server = subprocess.Popen(["python", "-m", "web.app"]) 
 mobility = subprocess.Popen(["./builds/mobility_aid"])
  
 try:
