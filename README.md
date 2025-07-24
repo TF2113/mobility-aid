@@ -12,7 +12,7 @@ This mobility aid project helps users safely navigate streets, particularly at p
 
 - **Ultrasonic sensing** to detect nearby obstacles
 - **Traffic light recognition** using a camera and an efficient YOLOv11n model
-- **Feedback mechanisms** vibration triggered based on proximity and light state
+- **Feedback mechanism** via vibration, triggered based on proximity and light state
 
 ---
 
