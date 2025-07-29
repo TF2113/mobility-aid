@@ -7,7 +7,7 @@ from ultralytics import YOLO
 last_vibrate = 0
 vibrate_cooldown = 1
 
-vibrate_queue = queue.Queue()
+vibrate_queue = queue.Queue(maxsize=3)
 
 def queue_manager():
     while True:
@@ -56,11 +56,17 @@ def run_inference(model, image_path: str, count):
     
     now = time.time()
     if detected_ped_red and (now - last_vibrate) > vibrate_cooldown:
-        vibrate_queue.put(["./builds/vibrate", "3", "0.5", "0.75"])
-        last_vibrate = now
+        if not vibrate_queue.full():
+            vibrate_queue.put(["./builds/vibrate", "3", "0.5", "0.75"])
+            last_vibrate = now
+        else:
+            print("Queue full, discarding new vibration")
     elif detected_ped_green and (now - last_vibrate) > vibrate_cooldown:
-        vibrate_queue.put(["./builds/vibrate", "1", "2", "0"])
-        last_vibrate = now
+            if not vibrate_queue.full():
+                vibrate_queue.put(["./builds/vibrate", "1", "2", "0"])
+                last_vibrate = now
+            else:
+                print("Queue full, discarding new vibration")
         
         
 def main():
@@ -79,7 +85,7 @@ def main():
     except KeyboardInterrupt:
         print("Exiting...")
     
-    queue_manager.put(None)
+    vibrate_queue.put(None)
     vib_thread.join()
     
 
