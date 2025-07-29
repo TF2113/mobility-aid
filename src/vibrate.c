@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/mman.h>
+#include <sys/file.h>
 #include "gpio_functions.h"
 
 #define GPIO_OFFSET 0x0 // Storing /dev/gpiomem in virtual memory via mmap()
@@ -36,6 +37,16 @@ int vibrate(int count, double duration, double delay)
         return 1;
     }
 
+    int lock_fd = open("./builds/tmp/vibrate.lock", O_CREAT | O_RDWR, 0666);
+    if (lock_fd < 0) {
+        perror("open lock file");
+        return 1;
+    }
+    if (flock(lock_fd, LOCK_EX | LOCK_NB) < 0) {
+        close(lock_fd);
+        return 0;
+    }
+
     gpioSetFunction(gpio, VIB_MOTOR, 0b001);
 
     for (int i = 0; i < count; i++)
@@ -48,7 +59,8 @@ int vibrate(int count, double duration, double delay)
 
     munmap((void *)gpio, MEM_BLOCK); // Unmap memory
     close(fd);                       // Close /dev/gpiomem file
-
+    flock(lock_fd, LOCK_UN);
+    close(lock_fd);
     return 0;
 }
 
