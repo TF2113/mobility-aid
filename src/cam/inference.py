@@ -1,9 +1,23 @@
 import subprocess
 import time
+import queue
+import threading
 from ultralytics import YOLO
 
 last_vibrate = 0
 vibrate_cooldown = 1
+
+vibrate_queue = queue.Queue()
+
+def queue_manager():
+    while True:
+        cmd = vibrate_queue.get()
+        if cmd is None:
+            break
+        subprocess.run(cmd)
+
+vib_thread = threading.Thread(target=queue_manager, daemon=True)
+vib_thread.start()
 
 def capture_image(image_path: str, width=320, height=320):
     cmd = [
@@ -42,10 +56,10 @@ def run_inference(model, image_path: str, count):
     
     now = time.time()
     if detected_ped_red and (now - last_vibrate) > vibrate_cooldown:
-        subprocess.run(["./builds/vibrate", "3", "0.5", "0.75"])
+        vibrate_queue.put(["./builds/vibrate", "3", "0.5", "0.75"])
         last_vibrate = now
     elif detected_ped_green and (now - last_vibrate) > vibrate_cooldown:
-        subprocess.run(["./builds/vibrate", "1", "2", "0"])
+        vibrate_queue.put(["./builds/vibrate", "1", "2", "0"])
         last_vibrate = now
         
         
@@ -54,13 +68,20 @@ def main():
     image_path = './builds/captures/image0.jpg'
     count = 0
 
-    while True:
-        count += 1
-        if capture_image(image_path):
-            run_inference(model, image_path, count)
-        else:
-            print(f"[Capture {count}] Skipped due to error.")
-        time.sleep(0.5)
+    try:
+        while True:
+            count += 1
+            if capture_image(image_path):
+                run_inference(model, image_path, count)
+            else:
+                print(f"[Capture {count}] Skipped due to error.")
+            time.sleep(0.5)
+    except KeyboardInterrupt:
+        print("Exiting...")
+    
+    queue_manager.put(None)
+    vib_thread.join()
+    
 
 if __name__ == "__main__":
     main()
