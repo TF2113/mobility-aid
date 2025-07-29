@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/mman.h>
@@ -9,7 +10,7 @@
 
 #define VIB_MOTOR 13
 
-int main()
+int vibrate(int count, double duration, double delay)
 {
 
     int fd = open("/dev/gpiomem", O_RDWR | O_SYNC); // READ & WRITE perms and SYNC to prevent program from continuing before writes are finished
@@ -37,16 +38,34 @@ int main()
 
     gpioSetFunction(gpio, VIB_MOTOR, 0b001);
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < count; i++)
     {
         gpioSet0(gpio, VIB_MOTOR);
-        usleep(350000);
+        usleep((int)(duration * 1000000));
         gpioClear0(gpio, VIB_MOTOR);
-        usleep(250000);
+        usleep((int)(delay * 1000000));
     }
 
     munmap((void *)gpio, MEM_BLOCK); // Unmap memory
     close(fd);                       // Close /dev/gpiomem file
 
     return 0;
+}
+
+int main(int argc, char *argv[])
+{
+    if (argc != 4) {
+        fprintf(stderr, "Usage: %s <vibration_count> <duration(s)> <delay(s)>\n", argv[0]);
+        return 1;
+    }
+
+    int count = atoi(argv[1]);
+    double duration = atof(argv[2]);
+    double delay = atof(argv[3]);
+    if (count <= 0 || duration < 0 || delay < 0) {
+        fprintf(stderr, "Error: count, duration and delay must be positive.\n");
+        return 1;
+    }
+
+    return vibrate(count, duration, delay);
 }
