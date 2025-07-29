@@ -103,14 +103,37 @@ int main() {
         usleep(20); // Short pulse
         gpioClear0(gpio, TRIG); // Clear TRIG bits
 
-        while (gpioLevel0(gpio, ECHO) == 0); // Wait for ECHO level to change
+        uint32_t timeout = 1000000;
+
+        while (gpioLevel0(gpio, ECHO) == 0 && timeout > 0){ // Wait for ECHO level to change
+            timeout--;
+            usleep(1);
+        } 
+        if (timeout == 0) {
+            printf("Sensor timed out while waiting for ECHO to HIGH\n");
+            continue;
+        }
+
         startTick = getCurrentTick(); // Get tick at change
 
-        while (gpioLevel0(gpio, ECHO) != 0); // Wait until ECHO level resets to 0
+        timeout = 1000000;
+        while (gpioLevel0(gpio, ECHO) != 0 && timeout > 0){ // Wait until ECHO level resets to 0
+            timeout--;
+            usleep(1);
+        }
+        if (timeout == 0) {
+            printf("Sensor timed out while waiting for ECHO to LOW\n");
+            continue;
+        }
         endTick = getCurrentTick(); // Get tick after ECHO is received
 
         uint32_t duration = endTick - startTick; // Formula for calculating distance
         float distance_cm = duration / 58.8;     // 58.8 (rounded up) is time taken (µs) for sound to travel 1cm at 20c
+
+        if (distance_cm < 1.0 || distance_cm > 200){
+            printf("Invalid distance: %.2f cm \n", distance_cm);
+            continue;
+        }
 
         int numBlink = prox_vibrate / distance_cm;
         int delay = 40000 * distance_cm;
