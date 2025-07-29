@@ -7,9 +7,10 @@
 #include <time.h>
 #include <sys/mman.h> //Memory management for mmap() and munmap()
 #include <sys/stat.h> 
+#include <stdlib.h>
+#include <sqlite3.h>
 #include "tick.h"     //Used for getCurrentTick() defined in /utils/tick.c
 #include "gpio_functions.h" //Used for GPIO functions defined in /utils/gpio_functions.h
-#include <sqlite3.h>
 #include "config_db.h"
 
 #define GPIO_OFFSET 0x0 // Storing /dev/gpiomem in virtual memory via mmap()
@@ -118,10 +119,12 @@ int main() {
         
         if (distance_cm < prox_vibrate) {
             for (int j = 0; j < numBlink; j++) {
+                char cmd[128];
+                float delay_sec = delay / 1000000.0f;  // Convert microseconds to seconds
+                snprintf(cmd, sizeof(cmd), "./builds/vibrate %d %.2f %.2f", numBlink, delay_sec, delay_sec);
+
                 gpioSet0(gpio, RED_LED); // Flash LED and vibrate motor when within proximity to the sensor corresponding to the distance, quickens as the distance decreases
-                gpioSet0(gpio, VIB_MOTOR);
-                usleep(delay);
-                gpioClear0(gpio, VIB_MOTOR);
+                system(cmd);
                 gpioClear0(gpio, RED_LED);
                 usleep(delay);
             }
