@@ -9,6 +9,7 @@
 #include <sys/stat.h> 
 #include <stdlib.h>
 #include <sqlite3.h>
+#include <sys/wait.h>
 #include "tick.h"     //Used for getCurrentTick() defined in /utils/tick.c
 #include "gpio_functions.h" //Used for GPIO functions defined in /utils/gpio_functions.h
 #include "config_db.h"
@@ -88,6 +89,11 @@ int main() {
     int i = 0;
     while(running) {
 
+        int status;
+        pid_t pid;
+        while ((pid = waitpid(-1, &status, WNOHANG)) > 0) {
+        }
+
         time_t now = time(NULL);
         if (now - last_config_check >= config_check_interval) {
             prox_vibrate = get_int_config(db, "prox_vibrate", prox_vibrate);
@@ -132,6 +138,8 @@ int main() {
 
         if (distance_cm < 1.0 || distance_cm > 200){
             printf("Invalid distance: %.2f cm \n", distance_cm);
+            gpioClear0(gpio, TRIG);
+            usleep(100000);
             continue;
         }
 
@@ -142,13 +150,29 @@ int main() {
         
         if (distance_cm < prox_vibrate) {
             for (int j = 0; j < numBlink; j++) {
-                char cmd[128];
-                float delay_sec = delay / 1000000.0f;  // Convert microseconds to seconds
-                snprintf(cmd, sizeof(cmd), "./builds/vibrate %d %.2f %.2f", numBlink, delay_sec, delay_sec);
-
-                gpioSet0(gpio, RED_LED); // Flash LED and vibrate motor when within proximity to the sensor corresponding to the distance, quickens as the distance decreases
-                system(cmd);
-                gpioClear0(gpio, RED_LED);
+                pid_t pid = fork();
+                if (pid == 0) {
+                    char count_str[16];
+                    char duration_str[16];
+                    char delay_str[16];
+            
+                    float delay_sec = delay / 1000000.0f;  // Convert microseconds to seconds
+            
+                    snprintf(count_str, sizeof(count_str), "%d", numBlink);
+                    snprintf(duration_str, sizeof(duration_str), "%.2f", delay_sec);
+                    snprintf(delay_str, sizeof(delay_str), "%.2f", delay_sec);
+            
+                    execl("./builds/vibrate", "./builds/vibrate", count_str, duration_str, delay_str, (char*)NULL);
+            
+                    perror("execl failed");
+                    _exit(1);
+                } else if (pid > 0) {
+                    gpioSet0(gpio, RED_LED); // Flash LED and vibrate motor when within proximity to the sensor corresponding to the distance, quickens as the distance decreases
+                    usleep(delay);
+                    gpioClear0(gpio, RED_LED);
+                } else {
+                    perror("Fork failed");
+                }
                 usleep(delay);
             }
         }
@@ -170,4 +194,5 @@ int main() {
     close(fd);                       // Close /dev/gpiomem file
 
     return 0;
+
 }
