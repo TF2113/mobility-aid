@@ -1,3 +1,4 @@
+#include "vibrate.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -11,8 +12,7 @@
 
 #define VIB_MOTOR 13
 
-int vibrate(int count, double duration, double delay)
-{
+int vibrate(int count, double duration, double delay){
 
     int fd = open("/dev/gpiomem", O_RDWR | O_SYNC); // READ & WRITE perms and SYNC to prevent program from continuing before writes are finished
 
@@ -30,8 +30,7 @@ int vibrate(int count, double duration, double delay)
                                    fd,                     // File descriptor (gpiomem)
                                    GPIO_OFFSET);           // Start of GPIO address within gpiomem (0x0)
 
-    if (gpio == MAP_FAILED)
-    {
+    if (gpio == MAP_FAILED){
         perror("Failed to map gpio registers\n");
         close(fd);
         return 1;
@@ -49,8 +48,7 @@ int vibrate(int count, double duration, double delay)
 
     gpioSetFunction(gpio, VIB_MOTOR, 0b001);
 
-    for (int i = 0; i < count; i++)
-    {
+    for (int i = 0; i < count; i++){
         gpioSet0(gpio, VIB_MOTOR);
         usleep((int)(duration * 1000000));
         gpioClear0(gpio, VIB_MOTOR);
@@ -64,8 +62,7 @@ int vibrate(int count, double duration, double delay)
     return 0;
 }
 
-int main(int argc, char *argv[])
-{
+int cli_vibrate(int argc, char *argv[]){
     if (argc != 4) {
         fprintf(stderr, "Usage: %s <vibration_count> <duration(s)> <delay(s)>\n", argv[0]);
         return 1;
@@ -80,4 +77,8 @@ int main(int argc, char *argv[])
     }
 
     return vibrate(count, duration, delay);
+}
+
+int main(int argc, char *argv[]){
+    return cli_vibrate(argc, argv);
 }
