@@ -1,18 +1,33 @@
 #include "unity.h"
-#include "vibrate.h"
+#include "vibrate_mock.h"
 #include <stdio.h>
 #include <string.h>
 
-void setUp(void) {
+int cli_vibrate(int argc, char *argv[]);
 
+void setUp(void) {
+    reset_vibrate_mock();
 }
 
 void tearDown(void) {
 
 }
 
-void test_cli_vibrate_valid_num_args(void){
-    
+void test_cli_vibrate_valid_args(void){
+    // Prepare valid arguments
+    char *argv[] = {"./vibrate_test", "5", "1.5", "0.5"};
+    int argc = 4;
+    double range = 0.001;
+
+    // Call the function with valid arguments
+    int result = cli_vibrate(argc, argv);
+
+    TEST_ASSERT_EQUAL_INT(0, result);
+    TEST_ASSERT_EQUAL_INT(1, get_vibrate_call_count());
+    TEST_ASSERT_EQUAL_INT(5, get_last_vibration_count_arg());
+    TEST_ASSERT_DOUBLE_WITHIN(range, 1.5, get_last_duration_arg());
+    TEST_ASSERT_DOUBLE_WITHIN(range, 0.5, get_last_delay_arg());
+
 }
 
 void test_cli_vibrate_invalid_num_args(void){
@@ -54,6 +69,7 @@ void test_cli_vibrate_invalid_num_args(void){
 
 int main(void) {
     UNITY_BEGIN();
+    RUN_TEST(test_cli_vibrate_valid_args);
     RUN_TEST(test_cli_vibrate_invalid_num_args);
     return UNITY_END();
 }
