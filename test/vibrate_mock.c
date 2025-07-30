@@ -1,12 +1,41 @@
 #include "vibrate.h"
 #include <stdio.h>
 
+static int s_call_count = 0;
+static int s_last_count = 0;
+static double s_last_duration = 0.0;
+static double s_last_delay = 0.0;
+
 // Mock version of the vibrate function.
 int vibrate(int count, double duration, double delay) {
-    (void)count;
-    (void)duration;
-    (void)delay;
+    s_call_count++;
+    s_last_count = count;
+    s_last_duration = duration;
+    s_last_delay = delay;
     return 0; 
+}
+
+void reset_vibrate_mock(void) {
+    s_call_count = 0;
+    s_last_count = 0;
+    s_last_duration = 0.0;
+    s_last_delay = 0.0;
+}
+
+int get_vibrate_call_count(void) {
+    return s_call_count;
+}
+
+int get_last_vibration_count_arg(void) {
+    return s_last_count;
+}
+
+double get_last_duration_arg(void) {
+    return s_last_duration;
+}
+
+double get_last_delay_arg(void) {
+    return s_last_delay;
 }
 
 int cli_vibrate(int argc, char *argv[]) {
