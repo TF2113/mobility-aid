@@ -13,7 +13,7 @@ TEST_TARGET = builds/test_runner
 # Source files
 C_SOURCES = src/prox_sensor.c src/utils/tick.c src/utils/gpio_functions.c src/utils/config_db.c
 VIB_SOURCES = src/vibrate.c src/utils/gpio_functions.c
-TEST_SOURCES = test/test_vibrate.c test/vibrate_mock.c test/framework/unity.c 
+TEST_SOURCES = test/test_vibrate.c test/vibrate_mock.c test/hw_mock.c test/framework/unity.c 
 
 # Phony targets
 .PHONY: all clean
