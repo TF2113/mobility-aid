@@ -1,4 +1,5 @@
 #include "hw_mock.h"
+#include "unity.h"
 #include "gpio_functions.h"
 #include <sys/file.h>
 #include <sys/mman.h>

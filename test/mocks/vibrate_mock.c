@@ -1,4 +1,5 @@
 #include "vibrate.h"
+#include "unity.h"
 #include <stdio.h>
 
 static int s_call_count = 0;
