@@ -1,7 +1,10 @@
 #include "unity.h"
 #include "vibrate_mock.h"
 #include <stdio.h>
+#include <unistd.h>
 #include <string.h>
+
+static const char* STDERR_OUTPUT_FILE = "stderr_test.txt";
 
 int cli_vibrate(int argc, char *argv[]);
 
@@ -10,7 +13,9 @@ void setUp(void) {
 }
 
 void tearDown(void) {
-
+    if(access(STDERR_OUTPUT_FILE, F_OK) == 0){
+        remove(STDERR_OUTPUT_FILE);
+    }
 }
 
 void test_cli_vibrate_valid_args(void){
@@ -32,7 +37,7 @@ void test_cli_vibrate_valid_args(void){
 
 void test_cli_vibrate_invalid_num_args(void){
     FILE* orig_stderr = stderr;
-    stderr = freopen("stderr_test.txt", "w", stderr);
+    stderr = freopen(STDERR_OUTPUT_FILE, "w", stderr);
     if (stderr == NULL) {
         TEST_FAIL_MESSAGE("Failed to redirect stderr");
     }
@@ -50,13 +55,13 @@ void test_cli_vibrate_invalid_num_args(void){
 
     // Read the error message from the temporary file
     char err_buffer[256];
-    FILE* test_output = fopen("stderr_test.txt", "r");
+    FILE* test_output = fopen(STDERR_OUTPUT_FILE, "r");
     if (test_output == NULL) {
         TEST_FAIL_MESSAGE("Failed to open stderr output file for reading");
     }
     fgets(err_buffer, sizeof(err_buffer), test_output);
     fclose(test_output);
-    remove("stderr_test.txt");
+    remove(STDERR_OUTPUT_FILE);
 
     // Construct the expected error message
     char expected_error[256];
