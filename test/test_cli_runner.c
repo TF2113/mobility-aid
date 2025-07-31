@@ -1,10 +1,8 @@
 #include "unity.h"
-#include "hw_mock.h" 
 #include "vibrate_mock.h" 
 #include <unistd.h>       
 
 void setUp(void) {
-    reset_hw_mocks();
     reset_vibrate_mock();
 }
 
@@ -13,7 +11,6 @@ void tearDown(void) {
         remove("stderr_test.txt");
     }
 }
-
 void test_cli_vibrate_valid_args(void);
 void test_cli_vibrate_invalid_num_args(void);
 
