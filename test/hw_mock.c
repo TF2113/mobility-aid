@@ -35,3 +35,63 @@ const GpioCall* get_gpio_call(int index) {
 long long get_total_usleep_time(void) { 
     return s_total_usleep; 
 }
+
+static void log_gpio_call(GpioCallType type, int gpioPin, int funcCode){
+    if (s_gpio_call_count < 100) {
+        s_gpio_call_log[s_gpio_call_count].type = type;
+        s_gpio_call_log[s_gpio_call_count].gpioPin = gpioPin;
+        s_gpio_call_log[s_gpio_call_count].funcCode = funcCode;
+        s_gpio_call_count++;
+    }
+}
+
+int open(const char* pathname, int flags, ...){
+    if(s_fail_type == MOCK_FAILED_OPEN_GPIOMEM && strcmp(pathname, "/dev/gpiomem") == 0){
+        return -1;
+    }
+
+    if(s_fail_type == MOCK_FAILED_OPEN_FLOCK){
+        return -1;
+    }
+
+    return 10;
+}
+
+void* mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset){
+    if(s_fail_type == MOCK_FAILED_MMAP){
+        return -1;
+    }
+
+    return &s_gpiomem_pointer;
+}
+
+int flock(int fd, int operation){
+    if(s_fail_type == MOCK_FAILED_FLOCK){
+        return -1;
+    }
+    return 0;
+}
+
+void usleep(unsigned int usec) {
+    s_total_usleep += usec;
+}
+
+int close(int fd) { 
+    return 0; 
+}
+
+int munmap(void *addr, size_t length) { 
+    return 0; 
+}
+
+void gpioSetFunction(volatile uint32_t *gpio, int pin, int function) {
+    log_gpio_call(GPIO_SET_FUNC, pin, function);
+}
+
+void gpioSet0(volatile uint32_t *gpio, int pin) {
+    log_gpio_call(GPIO_SET, pin, 0);
+}
+
+void gpioClear0(volatile uint32_t *gpio, int pin) {
+    log_gpio_call(GPIO_SET_CLEAR, pin, 0);
+}
