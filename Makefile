@@ -15,7 +15,7 @@ LOGIC_TEST_TARGET = builds/test_logic_runner
 C_SOURCES = src/prox_sensor.c src/utils/tick.c src/utils/gpio_functions.c src/utils/config_db.c
 VIB_SOURCES = src/vibrate.c src/utils/gpio_functions.c
 CLI_TEST_SOURCES = test/test_cli_runner.c test/test_cli_vibrate.c test/mocks/vibrate_mock.c test/framework/unity.c
-LOGIC_TEST_SOURCES = test/test_logic_runner.c test/test_logic_vibrate.c src/vibrate_unit.c test/mocks/hw_mock.c test/framework/unity.c
+LOGIC_TEST_SOURCES = test/test_logic_runner.c test/test_logic_vibrate.c test/mocks/vibrate_unit.c test/mocks/hw_mock.c test/framework/unity.c
 
 # Phony targets
 .PHONY: all clean
