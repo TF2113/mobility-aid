@@ -8,16 +8,6 @@ static const char* STDERR_OUTPUT_FILE = "stderr_test.txt";
 
 int cli_vibrate(int argc, char *argv[]);
 
-void setUp(void) {
-    reset_vibrate_mock();
-}
-
-void tearDown(void) {
-    if(access(STDERR_OUTPUT_FILE, F_OK) == 0){
-        remove(STDERR_OUTPUT_FILE);
-    }
-}
-
 void test_cli_vibrate_valid_args(void){
     // Prepare valid arguments
     char *argv[] = {"./vibrate_test", "5", "1.5", "0.5"};
@@ -43,7 +33,7 @@ void test_cli_vibrate_invalid_num_args(void){
     }
 
     // Prepare invalid arguments
-    char *argv[] = {"test_program", "another_arg"};
+    char *argv[] = {"test_program", "1"};
     int argc = 2;
 
     // Call the function with invalid arguments
@@ -70,11 +60,4 @@ void test_cli_vibrate_invalid_num_args(void){
     // Assert that the function returned an error and printed the correct message
     TEST_ASSERT_EQUAL_INT(1, result);
     TEST_ASSERT_EQUAL_STRING(expected_error, err_buffer);
-}
-
-int main(void) {
-    UNITY_BEGIN();
-    RUN_TEST(test_cli_vibrate_valid_args);
-    RUN_TEST(test_cli_vibrate_invalid_num_args);
-    return UNITY_END();
 }
