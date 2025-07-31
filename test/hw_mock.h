@@ -18,7 +18,7 @@ typedef enum {
     GPIO_GET_LEVEL,
     GPIO_SET_FUNC,
     GPIO_SET_CLEAR,
-    GPIO_SET_HIGH
+    GPIO_SET
 } GpioCallType;
 
 typedef struct {
