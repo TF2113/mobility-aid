@@ -53,6 +53,14 @@ void test_cli_vibrate_valid_args(void){
 
 }
 
+void test_cli_vibrate_no_args(void){
+    char *argv[] = {"test_program"};
+
+    char expected_error[256];
+    sprintf(expected_error, "Usage: %s <vibration_count> <duration(s)> <delay(s)>", argv[0]);
+    ASSERT_CLI_ERROR(argv, expected_error);
+}
+
 void test_cli_vibrate_invalid_num_args(void){
     char *argv[] = {"test_program", "1"};
 
