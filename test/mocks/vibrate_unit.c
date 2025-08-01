@@ -39,7 +39,7 @@ int vibrate(int count, double duration, double delay){
 
     int lock_fd = open("./builds/tmp/vibrate.lock", O_CREAT | O_RDWR, 0666);
     if (lock_fd < 0) {
-        perror("open lock file");
+        perror("Cannot open lock file");
         return 1;
     }
     if (flock(lock_fd, LOCK_EX | LOCK_NB) < 0) {
