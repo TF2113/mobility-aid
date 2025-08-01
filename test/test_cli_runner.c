@@ -11,14 +11,17 @@ void tearDown(void) {
         remove("stderr_test.txt");
     }
 }
+
 void test_cli_vibrate_valid_args(void);
 void test_cli_vibrate_invalid_num_args(void);
+void test_cli_vibrate_negative_args(void);
 
 int main(void) {
     UNITY_BEGIN();
 
     RUN_TEST(test_cli_vibrate_valid_args);
     RUN_TEST(test_cli_vibrate_invalid_num_args);
+    RUN_TEST(test_cli_vibrate_negative_args);
 
     return UNITY_END();
 }
