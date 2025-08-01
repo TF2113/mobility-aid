@@ -6,6 +6,7 @@
 #include <sys/mman.h>
 #include <sys/file.h>
 #include "gpio_functions.h"
+#include <errno.h>
 
 #define GPIO_OFFSET 0x0 // Storing /dev/gpiomem in virtual memory via mmap()
 #define MEM_BLOCK 4096  // 4KB memory block for storing register data
@@ -67,14 +68,40 @@ int cli_vibrate(int argc, char *argv[]){
         fprintf(stderr, "Usage: %s <vibration_count> <duration(s)> <delay(s)>\n", argv[0]);
         return 1;
     }
+    
+    char *endptr_count;
+    char *endptr_duration;
+    char *endptr_delay;
+    long count_long;
+    double duration, delay;
 
-    int count = atoi(argv[1]);
-    double duration = atof(argv[2]);
-    double delay = atof(argv[3]);
-    if (count <= 0 || duration < 0 || delay < 0) {
-        fprintf(stderr, "Error: count, duration and delay must be positive.\n");
+    errno = 0;
+
+    count_long = strtol(argv[1], &endptr_count, 10);
+
+    if (errno != 0 || endptr_count == argv[1] || *endptr_count != '\0') {
+        fprintf(stderr, "Error: 'vibration_count' must be a valid integer.\n");
         return 1;
     }
+
+    duration = strtod(argv[2], &endptr_duration);
+    if (endptr_duration == argv[2] || *endptr_duration != '\0') {
+        fprintf(stderr, "Error: 'duration' must be a valid number.\n");
+        return 1;
+    }
+
+    delay = strtod(argv[3], &endptr_delay);
+    if (endptr_delay == argv[3] || *endptr_delay != '\0') {
+        fprintf(stderr, "Error: 'delay' must be a valid number.\n");
+        return 1;
+    }
+
+    if (count_long <= 0 || duration < 0 || delay < 0) {
+        fprintf(stderr, "Error: count must be positive, duration and delay cannot be negative.\n");
+        return 1;
+    }
+
+    int count = (int)count_long;
 
     return vibrate(count, duration, delay);
 }
