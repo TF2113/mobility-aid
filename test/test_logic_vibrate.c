@@ -38,22 +38,14 @@ void test_vibrate_logic_success_path(void) {
     TEST_ASSERT_EQUAL_UINT64(expected_usleep_us, get_total_usleep_time());
 }
 
-void test_vibrate_open_gpiomem_valid(void){
-    int result = open("/dev/gpiomem", O_RDWR | O_SYNC);
-
-    TEST_ASSERT_EQUAL_INT(10, result);
-}
-
 void test_vibrate_open_gpiomem_fail(void){
     set_hw_mock_failure_mode(MOCK_FAILED_OPEN_GPIOMEM);
-    int result = open("/dev/gpiomem", O_RDWR | O_SYNC);
-
-    TEST_ASSERT_EQUAL_INT(-1, result);
+    int result = vibrate(1, 0.1, 0.1);
+    TEST_ASSERT_EQUAL_INT(1, result);
 }
 
 void test_vibrate_open_flocked_fail(void){
     set_hw_mock_failure_mode(MOCK_FAILED_OPEN_FLOCK);
-    int result = open("./builds/tmp/vibrate.lock", O_CREAT | O_RDWR, 0666);
-
-    TEST_ASSERT_EQUAL_INT(-1, result);
+    int result = vibrate(1, 0.1, 0.1);
+    TEST_ASSERT_EQUAL_INT(1, result);
 }
