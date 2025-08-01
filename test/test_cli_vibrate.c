@@ -92,7 +92,118 @@ void test_cli_vibrate_negative_args(void){
 
     // Construct the expected error message
     char expected_error[256];
-    sprintf(expected_error, "Error: count, duration and delay must be positive.\n");
+    sprintf(expected_error, "Error: count must be positive, duration and delay cannot be negative.\n");
+
+    // Assert that the function returned an error and printed the correct message
+    TEST_ASSERT_EQUAL_INT(1, result);
+    TEST_ASSERT_EQUAL_STRING(expected_error, err_buffer);
+}
+
+void test_cli_vibrate_non_integer_count_arg(void){
+    FILE* orig_stderr = stderr;
+    stderr = freopen(STDERR_OUTPUT_FILE, "w", stderr);
+    if (stderr == NULL) {
+        TEST_FAIL_MESSAGE("Failed to redirect stderr");
+    }
+
+    // Prepare invalid arguments
+    char *argv[] = {"./vibrate_test", "five", "1.5", "0.5"};
+    int argc = 4;
+
+    // Call the function with invalid arguments
+    int result = cli_vibrate(argc, argv);
+
+    // Restore stderr
+    fclose(stderr);
+    stderr = orig_stderr;
+
+    // Read the error message from the temporary file
+    char err_buffer[256];
+    FILE* test_output = fopen(STDERR_OUTPUT_FILE, "r");
+    if (test_output == NULL) {
+        TEST_FAIL_MESSAGE("Failed to open stderr output file for reading");
+    }
+    fgets(err_buffer, sizeof(err_buffer), test_output);
+    fclose(test_output);
+    remove(STDERR_OUTPUT_FILE);
+
+    // Construct the expected error message
+    char expected_error[256];
+    sprintf(expected_error, "Error: 'vibration_count' must be a valid integer.\n");
+
+    // Assert that the function returned an error and printed the correct message
+    TEST_ASSERT_EQUAL_INT(1, result);
+    TEST_ASSERT_EQUAL_STRING(expected_error, err_buffer);
+}
+
+void test_cli_vibrate_non_double_duration_arg(void){
+    FILE* orig_stderr = stderr;
+    stderr = freopen(STDERR_OUTPUT_FILE, "w", stderr);
+    if (stderr == NULL) {
+        TEST_FAIL_MESSAGE("Failed to redirect stderr");
+    }
+
+    // Prepare invalid arguments
+    char *argv[] = {"./vibrate_test", "5", "two", "0.5"};
+    int argc = 4;
+
+    // Call the function with invalid arguments
+    int result = cli_vibrate(argc, argv);
+
+    // Restore stderr
+    fclose(stderr);
+    stderr = orig_stderr;
+
+    // Read the error message from the temporary file
+    char err_buffer[256];
+    FILE* test_output = fopen(STDERR_OUTPUT_FILE, "r");
+    if (test_output == NULL) {
+        TEST_FAIL_MESSAGE("Failed to open stderr output file for reading");
+    }
+    fgets(err_buffer, sizeof(err_buffer), test_output);
+    fclose(test_output);
+    remove(STDERR_OUTPUT_FILE);
+
+    // Construct the expected error message
+    char expected_error[256];
+    sprintf(expected_error, "Error: 'duration' must be a valid number.\n");
+
+    // Assert that the function returned an error and printed the correct message
+    TEST_ASSERT_EQUAL_INT(1, result);
+    TEST_ASSERT_EQUAL_STRING(expected_error, err_buffer);
+}
+
+void test_cli_vibrate_non_double_delay_arg(void){
+    FILE* orig_stderr = stderr;
+    stderr = freopen(STDERR_OUTPUT_FILE, "w", stderr);
+    if (stderr == NULL) {
+        TEST_FAIL_MESSAGE("Failed to redirect stderr");
+    }
+
+    // Prepare invalid arguments
+    char *argv[] = {"./vibrate_test", "5", "1.5", "one"};
+    int argc = 4;
+
+    // Call the function with invalid arguments
+    int result = cli_vibrate(argc, argv);
+
+    // Restore stderr
+    fclose(stderr);
+    stderr = orig_stderr;
+
+    // Read the error message from the temporary file
+    char err_buffer[256];
+    FILE* test_output = fopen(STDERR_OUTPUT_FILE, "r");
+    if (test_output == NULL) {
+        TEST_FAIL_MESSAGE("Failed to open stderr output file for reading");
+    }
+    fgets(err_buffer, sizeof(err_buffer), test_output);
+    fclose(test_output);
+    remove(STDERR_OUTPUT_FILE);
+
+    // Construct the expected error message
+    char expected_error[256];
+    sprintf(expected_error, "Error: 'delay' must be a valid number.\n");
 
     // Assert that the function returned an error and printed the correct message
     TEST_ASSERT_EQUAL_INT(1, result);
