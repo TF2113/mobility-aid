@@ -49,3 +49,23 @@ void test_vibrate_open_flocked_fail(void){
     int result = vibrate(1, 0.1, 0.1);
     TEST_ASSERT_EQUAL_INT(1, result);
 }
+
+void test_vibrate_mmap_failure(void) {
+    set_hw_mock_failure_mode(MOCK_FAILED_MMAP);
+    int result = vibrate(1, 0.1, 0.1);
+    TEST_ASSERT_EQUAL_INT(1, result);
+}
+
+void test_vibrate_flock_failure(void) {
+    set_hw_mock_failure_mode(MOCK_FAILED_FLOCK);
+    int result = vibrate(1, 0.1, 0.1);                        
+    TEST_ASSERT_EQUAL_INT(0, result);
+    TEST_ASSERT_EQUAL_INT(0, get_gpio_call_count());
+}
+
+void test_vibrate_zero_count(void) {
+    int result = vibrate(0, 0.1, 0.1);
+    TEST_ASSERT_EQUAL_INT(0, result);
+    TEST_ASSERT_EQUAL_INT(1, get_gpio_call_count()); 
+    TEST_ASSERT_EQUAL_UINT64(0, get_total_usleep_time());
+}
