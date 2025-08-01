@@ -6,10 +6,38 @@
 
 static const char* STDERR_OUTPUT_FILE = "stderr_test.txt";
 
+#define ASSERT_CLI_ERROR(argv_array, expected_error_string) \
+    do { \
+        FILE* orig_stderr = stderr; \
+        stderr = freopen(STDERR_OUTPUT_FILE, "w", stderr); \
+        if (stderr == NULL) { \
+            TEST_FAIL_MESSAGE("Failed to redirect stderr"); \
+        } \
+        \
+        /* The macro automatically calculates argc */ \
+        int argc = sizeof(argv_array) / sizeof(argv_array[0]); \
+        int result = cli_vibrate(argc, argv_array); \
+        \
+        fclose(stderr); \
+        stderr = orig_stderr; \
+        \
+        char err_buffer[256] = {0}; \
+        FILE* file = fopen(STDERR_OUTPUT_FILE, "r"); \
+        if (file) { \
+            fgets(err_buffer, sizeof(err_buffer), file); \
+            fclose(file); \
+        } \
+        remove(STDERR_OUTPUT_FILE); \
+        err_buffer[strcspn(err_buffer, "\n")] = 0; /* Trim newline */ \
+        \
+        TEST_ASSERT_EQUAL_INT(1, result); \
+        TEST_ASSERT_EQUAL_STRING(expected_error_string, err_buffer); \
+    } while (0)
+
+
 int cli_vibrate(int argc, char *argv[]);
 
 void test_cli_vibrate_valid_args(void){
-    // Prepare valid arguments
     char *argv[] = {"./vibrate_test", "5", "1.5", "0.5"};
     int argc = 4;
     double range = 0.001;
@@ -26,186 +54,29 @@ void test_cli_vibrate_valid_args(void){
 }
 
 void test_cli_vibrate_invalid_num_args(void){
-    FILE* orig_stderr = stderr;
-    stderr = freopen(STDERR_OUTPUT_FILE, "w", stderr);
-    if (stderr == NULL) {
-        TEST_FAIL_MESSAGE("Failed to redirect stderr");
-    }
-
-    // Prepare invalid arguments
     char *argv[] = {"test_program", "1"};
-    int argc = 2;
 
-    // Call the function with invalid arguments
-    int result = cli_vibrate(argc, argv);
-
-    // Restore stderr
-    fclose(stderr);
-    stderr = orig_stderr;
-
-    // Read the error message from the temporary file
-    char err_buffer[256];
-    FILE* test_output = fopen(STDERR_OUTPUT_FILE, "r");
-    if (test_output == NULL) {
-        TEST_FAIL_MESSAGE("Failed to open stderr output file for reading");
-    }
-    fgets(err_buffer, sizeof(err_buffer), test_output);
-    fclose(test_output);
-    remove(STDERR_OUTPUT_FILE);
-
-    // Construct the expected error message
     char expected_error[256];
-    sprintf(expected_error, "Usage: %s <vibration_count> <duration(s)> <delay(s)>\n", argv[0]);
-
-    // Assert that the function returned an error and printed the correct message
-    TEST_ASSERT_EQUAL_INT(1, result);
-    TEST_ASSERT_EQUAL_STRING(expected_error, err_buffer);
+    sprintf(expected_error, "Usage: %s <vibration_count> <duration(s)> <delay(s)>", argv[0]);
+    ASSERT_CLI_ERROR(argv, expected_error);
 }
 
 void test_cli_vibrate_negative_args(void){
-    FILE* orig_stderr = stderr;
-    stderr = freopen(STDERR_OUTPUT_FILE, "w", stderr);
-    if (stderr == NULL) {
-        TEST_FAIL_MESSAGE("Failed to redirect stderr");
-    }
-
-    // Prepare invalid arguments
     char *argv[] = {"./vibrate_test", "-5", "1.5", "0.5"};
-    int argc = 4;
-
-    // Call the function with invalid arguments
-    int result = cli_vibrate(argc, argv);
-
-    // Restore stderr
-    fclose(stderr);
-    stderr = orig_stderr;
-
-    // Read the error message from the temporary file
-    char err_buffer[256];
-    FILE* test_output = fopen(STDERR_OUTPUT_FILE, "r");
-    if (test_output == NULL) {
-        TEST_FAIL_MESSAGE("Failed to open stderr output file for reading");
-    }
-    fgets(err_buffer, sizeof(err_buffer), test_output);
-    fclose(test_output);
-    remove(STDERR_OUTPUT_FILE);
-
-    // Construct the expected error message
-    char expected_error[256];
-    sprintf(expected_error, "Error: count must be positive, duration and delay cannot be negative.\n");
-
-    // Assert that the function returned an error and printed the correct message
-    TEST_ASSERT_EQUAL_INT(1, result);
-    TEST_ASSERT_EQUAL_STRING(expected_error, err_buffer);
+    ASSERT_CLI_ERROR(argv, "Error: count must be positive, duration and delay cannot be negative.");
 }
 
 void test_cli_vibrate_non_integer_count_arg(void){
-    FILE* orig_stderr = stderr;
-    stderr = freopen(STDERR_OUTPUT_FILE, "w", stderr);
-    if (stderr == NULL) {
-        TEST_FAIL_MESSAGE("Failed to redirect stderr");
-    }
-
-    // Prepare invalid arguments
     char *argv[] = {"./vibrate_test", "five", "1.5", "0.5"};
-    int argc = 4;
-
-    // Call the function with invalid arguments
-    int result = cli_vibrate(argc, argv);
-
-    // Restore stderr
-    fclose(stderr);
-    stderr = orig_stderr;
-
-    // Read the error message from the temporary file
-    char err_buffer[256];
-    FILE* test_output = fopen(STDERR_OUTPUT_FILE, "r");
-    if (test_output == NULL) {
-        TEST_FAIL_MESSAGE("Failed to open stderr output file for reading");
-    }
-    fgets(err_buffer, sizeof(err_buffer), test_output);
-    fclose(test_output);
-    remove(STDERR_OUTPUT_FILE);
-
-    // Construct the expected error message
-    char expected_error[256];
-    sprintf(expected_error, "Error: 'vibration_count' must be a valid integer.\n");
-
-    // Assert that the function returned an error and printed the correct message
-    TEST_ASSERT_EQUAL_INT(1, result);
-    TEST_ASSERT_EQUAL_STRING(expected_error, err_buffer);
+    ASSERT_CLI_ERROR(argv, "Error: 'vibration_count' must be a valid integer.");
 }
 
 void test_cli_vibrate_non_double_duration_arg(void){
-    FILE* orig_stderr = stderr;
-    stderr = freopen(STDERR_OUTPUT_FILE, "w", stderr);
-    if (stderr == NULL) {
-        TEST_FAIL_MESSAGE("Failed to redirect stderr");
-    }
-
-    // Prepare invalid arguments
     char *argv[] = {"./vibrate_test", "5", "two", "0.5"};
-    int argc = 4;
-
-    // Call the function with invalid arguments
-    int result = cli_vibrate(argc, argv);
-
-    // Restore stderr
-    fclose(stderr);
-    stderr = orig_stderr;
-
-    // Read the error message from the temporary file
-    char err_buffer[256];
-    FILE* test_output = fopen(STDERR_OUTPUT_FILE, "r");
-    if (test_output == NULL) {
-        TEST_FAIL_MESSAGE("Failed to open stderr output file for reading");
-    }
-    fgets(err_buffer, sizeof(err_buffer), test_output);
-    fclose(test_output);
-    remove(STDERR_OUTPUT_FILE);
-
-    // Construct the expected error message
-    char expected_error[256];
-    sprintf(expected_error, "Error: 'duration' must be a valid number.\n");
-
-    // Assert that the function returned an error and printed the correct message
-    TEST_ASSERT_EQUAL_INT(1, result);
-    TEST_ASSERT_EQUAL_STRING(expected_error, err_buffer);
+    ASSERT_CLI_ERROR(argv, "Error: 'duration' must be a valid number.");
 }
 
 void test_cli_vibrate_non_double_delay_arg(void){
-    FILE* orig_stderr = stderr;
-    stderr = freopen(STDERR_OUTPUT_FILE, "w", stderr);
-    if (stderr == NULL) {
-        TEST_FAIL_MESSAGE("Failed to redirect stderr");
-    }
-
-    // Prepare invalid arguments
     char *argv[] = {"./vibrate_test", "5", "1.5", "one"};
-    int argc = 4;
-
-    // Call the function with invalid arguments
-    int result = cli_vibrate(argc, argv);
-
-    // Restore stderr
-    fclose(stderr);
-    stderr = orig_stderr;
-
-    // Read the error message from the temporary file
-    char err_buffer[256];
-    FILE* test_output = fopen(STDERR_OUTPUT_FILE, "r");
-    if (test_output == NULL) {
-        TEST_FAIL_MESSAGE("Failed to open stderr output file for reading");
-    }
-    fgets(err_buffer, sizeof(err_buffer), test_output);
-    fclose(test_output);
-    remove(STDERR_OUTPUT_FILE);
-
-    // Construct the expected error message
-    char expected_error[256];
-    sprintf(expected_error, "Error: 'delay' must be a valid number.\n");
-
-    // Assert that the function returned an error and printed the correct message
-    TEST_ASSERT_EQUAL_INT(1, result);
-    TEST_ASSERT_EQUAL_STRING(expected_error, err_buffer);
+    ASSERT_CLI_ERROR(argv, "Error: 'delay' must be a valid number.");
 }

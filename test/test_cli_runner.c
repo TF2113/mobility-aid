@@ -30,6 +30,5 @@ int main(void) {
     RUN_TEST(test_cli_vibrate_non_double_duration_arg);
     RUN_TEST(test_cli_vibrate_non_double_delay_arg);
 
-
     return UNITY_END();
 }
