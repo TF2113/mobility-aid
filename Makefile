@@ -2,25 +2,27 @@ CC = gcc
 
 # Compiler and Linker Flags
 CFLAGS = -Wall -Wextra -O2 -Iinclude -Isrc/utils
-TFLAGS = -DUNITY_INCLUDE_DOUBLE -Itest/framework -Itest/mocks
+TFLAGS = -DUNITY_INCLUDE_DOUBLE -Itest/framework -Itest/mocks -Isrc/utils
 LDLIBS = -lsqlite3
 
 # Targets
 C_TARGET = builds/mobility_aid
 VIB_TARGET = builds/vibrate
 CLI_TEST_TARGET = builds/test_cli_runner
+DB_TEST_TARGET = builds/test_db_runner
 LOGIC_TEST_TARGET = builds/test_logic_runner
 
 # Source files
 C_SOURCES = src/prox_sensor.c src/utils/tick.c src/utils/gpio_functions.c src/utils/config_db.c
 VIB_SOURCES = src/vibrate.c src/utils/gpio_functions.c
 CLI_TEST_SOURCES = test/test_cli_runner.c test/test_cli_vibrate.c test/mocks/vibrate_mock.c test/framework/unity.c
+DB_TEST_SOURCES = test/test_db_runner.c test/test_db_config.c src/utils/config_db.c test/framework/unity.c
 LOGIC_TEST_SOURCES = test/test_logic_runner.c test/test_logic_vibrate.c test/mocks/vibrate_unit.c test/mocks/hw_mock.c test/framework/unity.c
 
 # Phony targets
 .PHONY: all clean
 
-all: $(C_TARGET) $(VIB_TARGET) $(CLI_TEST_TARGET) $(LOGIC_TEST_TARGET)
+all: $(C_TARGET) $(VIB_TARGET) $(CLI_TEST_TARGET) $(LOGIC_TEST_TARGET) $(DB_TEST_TARGET)
 
 # C program
 $(C_TARGET): $(C_SOURCES)
@@ -34,9 +36,12 @@ $(VIB_TARGET): $(VIB_SOURCES)
 $(CLI_TEST_TARGET): $(CLI_TEST_SOURCES)
 	$(CC) $(CFLAGS) $(TFLAGS) -o $@ $(CLI_TEST_SOURCES)
 
+$(DB_TEST_TARGET): $(DB_TEST_SOURCES)
+	$(CC) $(CFLAGS) $(TFLAGS) -o $@ $(DB_TEST_SOURCES) $(LDLIBS)
+
 $(LOGIC_TEST_TARGET): $(LOGIC_TEST_SOURCES)
 	$(CC) $(CFLAGS) $(TFLAGS) -o $@ $(LOGIC_TEST_SOURCES)
 
 # Clean build files
 clean:
-	rm -f $(C_TARGET) $(VIB_TARGET) $(CLI_TEST_TARGET) $(LOGIC_TEST_TARGET)
+	rm -f $(C_TARGET) $(VIB_TARGET) $(CLI_TEST_TARGET) $(LOGIC_TEST_TARGET) $(DB_TEST_TARGET)
