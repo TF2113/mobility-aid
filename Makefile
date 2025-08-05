@@ -22,9 +22,18 @@ GPIO_TEST_SOURCES = test/test_gpio_runner.c test/test_gpio_functions.c src/utils
 LOGIC_TEST_SOURCES = test/test_logic_runner.c test/test_logic_vibrate.c test/mocks/vibrate_unit.c test/mocks/hw_mock.c test/framework/unity.c
 
 # Phony targets
-.PHONY: all clean
+.PHONY: all clean test-run
 
 all: $(C_TARGET) $(VIB_TARGET) $(CLI_TEST_TARGET) $(LOGIC_TEST_TARGET) $(DB_TEST_TARGET) $(GPIO_TEST_TARGET)
+test-run: $(CLI_TEST_TARGET) $(LOGIC_TEST_TARGET) $(DB_TEST_TARGET) $(GPIO_TEST_TARGET)
+	@echo "\nRunning Tests\n"
+	@./$(CLI_TEST_TARGET)
+	@echo ""
+	@./$(LOGIC_TEST_TARGET)
+	@echo ""
+	@./$(DB_TEST_TARGET)
+	@echo ""
+	@./$(GPIO_TEST_TARGET)
 
 # C program
 $(C_TARGET): $(C_SOURCES)
