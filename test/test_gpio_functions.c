@@ -53,3 +53,47 @@ void test_gpioLevel0_return_0_when_clear(void) {
     int pin = 18;
     TEST_ASSERT_EQUAL(0, gpioLevel0(mock_gpio_registers, pin));
 }
+
+void test_gpioSetFunction_changes_single_pin(void) {
+    uint32_t initialState = (2 << 6);
+    mock_gpio_registers[GPFSEL0] = initialState;
+
+    gpioSetFunction(mock_gpio_registers, 9, 0);
+    TEST_ASSERT_EQUAL_UINT32(initialState, mock_gpio_registers[GPFSEL0]);
+
+    gpioSetFunction(mock_gpio_registers, 5, 1);
+    uint32_t expected_state = initialState | (1 << 15);
+    TEST_ASSERT_EQUAL_UINT32(expected_state, mock_gpio_registers[GPFSEL0]);
+}
+
+void test_gpioSetFunction_handles_register_boundary(void) {
+    int pin_in_reg0 = 9;
+    int pin_in_reg1 = 10;
+    gpioSetFunction(mock_gpio_registers, pin_in_reg0, 1);
+    gpioSetFunction(mock_gpio_registers, pin_in_reg1, 2);
+
+    uint32_t expected_reg0 = (1 << 27);
+    TEST_ASSERT_EQUAL_UINT32(expected_reg0, mock_gpio_registers[GPFSEL0]);
+
+    uint32_t expected_reg1 = (2 << 0);
+    TEST_ASSERT_EQUAL_UINT32(expected_reg1, mock_gpio_registers[GPFSEL1]);
+}
+
+void test_gpioClear0_clears_correct_bit_multiple(void) {
+    uint32_t initial_levels = (1 << 5) | (1 << 12) | (1 << 30);
+    mock_gpio_registers[GPLEV0] = initial_levels;
+
+    gpioClear0(mock_gpio_registers, 12);
+    mock_gpio_registers[GPLEV0] &= ~(1 << 12);
+
+    TEST_ASSERT_EQUAL(1, gpioLevel0(mock_gpio_registers, 5));  
+    TEST_ASSERT_EQUAL(0, gpioLevel0(mock_gpio_registers, 12)); 
+    TEST_ASSERT_EQUAL(1, gpioLevel0(mock_gpio_registers, 30)); 
+}
+
+void test_gpioLevel0_reads_correct_multiple_high(void) {
+    mock_gpio_registers[GPLEV0] = (1 << 5) | (1 << 12) | (1 << 30);
+    TEST_ASSERT_EQUAL(1, gpioLevel0(mock_gpio_registers, 12));
+    TEST_ASSERT_EQUAL(0, gpioLevel0(mock_gpio_registers, 10));
+    TEST_ASSERT_EQUAL(1, gpioLevel0(mock_gpio_registers, 30));
+}
