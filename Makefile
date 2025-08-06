@@ -16,10 +16,10 @@ LOGIC_TEST_TARGET = builds/test_logic_runner
 # Source files
 C_SOURCES = src/sys_controller.c src/utils/*.c
 VIB_SOURCES = src/vibrate.c src/utils/gpio_functions.c
-CLI_TEST_SOURCES = test/test_cli_runner.c test/test_cli_vibrate.c test/mocks/vibrate_mock.c test/framework/unity.c
-DB_TEST_SOURCES = test/test_db_runner.c test/test_db_config.c src/utils/config_db.c test/framework/unity.c
-GPIO_TEST_SOURCES = test/test_gpio_runner.c test/test_gpio_functions.c src/utils/gpio_functions.c test/framework/unity.c
-LOGIC_TEST_SOURCES = test/test_logic_runner.c test/test_logic_vibrate.c test/mocks/vibrate_unit.c test/mocks/hw_mock.c test/framework/unity.c
+CLI_TEST_SOURCES = test/runners/test_cli_runner.c test/test_cli_vibrate.c test/mocks/vibrate_mock.c test/framework/unity.c
+DB_TEST_SOURCES = test/runners/test_db_runner.c test/test_db_config.c src/utils/config_db.c test/framework/unity.c
+GPIO_TEST_SOURCES = test/runners/test_gpio_runner.c test/test_gpio_functions.c src/utils/gpio_functions.c test/framework/unity.c
+LOGIC_TEST_SOURCES = test/runners/test_logic_runner.c test/test_logic_vibrate.c test/mocks/vibrate_unit.c test/mocks/hw_mock.c test/framework/unity.c
 
 # Phony targets
 .PHONY: all clean test-run
