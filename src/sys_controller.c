@@ -1,198 +1,69 @@
-#include <stdio.h>    //Standard library for input/output, used for perror()
-#include <stdint.h>   //Used for uint32_t, key for memory management
-#include <signal.h>   //Detect external signals for interupts
-#include <stdbool.h>  //Booleans
-#include <unistd.h>   //Low-level system calls like close() and usleep()
-#include <fcntl.h>    //Used for open() on /dev/gpiomem
+#include "sys_logic.h"
+#include "ultra_sensor.h"
+#include "feedback.h"
+#include "gpio_functions.h"
+#include <signal.h>
+#include <unistd.h>
+#include <stdio.h>
 #include <time.h>
-#include <sys/mman.h> //Memory management for mmap() and munmap()
-#include <sys/stat.h> 
-#include <stdlib.h>
-#include <sqlite3.h>
-#include <sys/wait.h>
-#include "tick.h"     //Used for getCurrentTick() defined in /utils/tick.c
-#include "gpio_functions.h" //Used for GPIO functions defined in /utils/gpio_functions.h
-#include "config_db.h"
 
-#define GPIO_OFFSET 0x0 // Storing /dev/gpiomem in virtual memory via mmap()
-#define MEM_BLOCK 4096  // 4KB memory block for storing register data
-
-//GPIO declarations
-#define VIB_MOTOR 13
-#define RED_LED 17
-#define TRIG 23
-#define ECHO 24
-#define YELLOW_LED 22
-#define GREEN_LED 27
-
+// Global flag to control the main loop, modified by the signal handler
 volatile bool running = true;
-
 void handle_signal(int sig) {
-    (void) sig;
+    (void)sig; // Suppress unused parameter warning
+    printf("\nSignal received, shutting down...\n");
     running = false;
 }
 
-void load_config(const char *filename);
-
 int main() {
+    AppState state = {0}; // Zero-initialize the entire state struct
+
+    // Initialize all systems
+    if (system_init(&state) != 0) {
+        fprintf(stderr, "Fatal: System initialization failed.\n");
+        return 1;
+    }
+
+    // Register signal handlers for clean shutdown
+    signal(SIGINT, handle_signal);  // Catch Ctrl+C
+    signal(SIGTERM, handle_signal); // Catch `kill` command
 
     time_t last_config_check = 0;
-    const int config_check_interval = 1;
+    const int CONFIG_CHECK_INTERVAL_S = 1;
+
+    printf("System running. Press Ctrl+C to exit.\n");
     
-    sqlite3 *db;
-    if (sqlite3_open("./src/configs/config.db", &db) != SQLITE_OK) {
-        fprintf(stderr, "Cannot open DB: %s\n", sqlite3_errmsg(db));
-        return 1;
-    }
+    // Main application loop
+    while (running) {
+        // Always on: Green LED indicates the main loop is active
+        gpioSet0(state.gpio, GREEN_LED);
 
-    signal(SIGINT, handle_signal);  // Catch Ctrl+C
-    signal(SIGTERM, handle_signal); // Allow program to be terminated via python terminate
-    
-    // Open GPIO memory register file
-    int fd = open("/dev/gpiomem", O_RDWR | O_SYNC); // READ & WRITE perms and SYNC to prevent program from continuing before writes are finished
+        // Periodically check for and clean up terminated child processes
+        system_reap_child_processes();
 
-    if (fd < 0) {
-        perror("Access to gpiomem failed\n");
-        return 1;
-    }
-
-    // 32 bit pointer to gpiomem for manipulating GPIO register via mmap()
-    volatile uint32_t *gpio = mmap(NULL,                   // Kernel chooses virtual memory address
-                                   MEM_BLOCK,              // Size of data to be mapped
-                                   PROT_READ | PROT_WRITE, // Allows data to be read and written to
-                                   MAP_SHARED,             // Other processes can use data
-                                   fd,                     // File descriptor (gpiomem)
-                                   GPIO_OFFSET);           // Start of GPIO address within gpiomem (0x0)
-
-    if (gpio == MAP_FAILED) {
-        perror("Failed to map gpio registers\n");
-        close(fd);
-        return 1;
-    }
-
-    //Set GPIO to output
-    gpioSetFunction(gpio, VIB_MOTOR, 0b001);
-    gpioSetFunction(gpio, RED_LED, 0b001);
-    gpioSetFunction(gpio, GREEN_LED, 0b001);
-    gpioSetFunction(gpio, YELLOW_LED, 0b001);
-    gpioSetFunction(gpio, TRIG, 0b001);
-
-    //Set ECHO to input
-    gpioSetFunction(gpio, ECHO, 0b000);
-
-    uint32_t startTick, endTick;
-    
-    // Sensor Initialise
-    gpioClear0(gpio, TRIG);
-    usleep(500000); // Allow sensor to settle
-
-    int i = 0;
-    while(running) {
-
-        int status;
-        pid_t pid;
-        while ((pid = waitpid(-1, &status, WNOHANG)) > 0) {
+        // Periodically reload configuration from the database
+        if (time(NULL) - last_config_check >= CONFIG_CHECK_INTERVAL_S) {
+            system_load_config(&state);
+            last_config_check = time(NULL);
         }
 
-        time_t now = time(NULL);
-        if (now - last_config_check >= config_check_interval) {
-            prox_vibrate = get_int_config(db, "prox_vibrate", prox_vibrate);
-            prox_yellow_led = get_int_config(db, "prox_yellow_led", prox_yellow_led);
-            last_config_check = now;
-            printf("[CONFIG] Loaded prox_vibrate=%d, prox_yellow_led=%d from DB\n", prox_vibrate, prox_yellow_led);
-        }
+        // 1. Get Data from Sensor
+        float distance = ultrasonic_get_distance_cm(state.gpio);
 
-        i++;
-        gpioSet0(gpio, GREEN_LED); // Turn on Green LED while program is active
-
-        gpioSet0(gpio, TRIG); // Set TRIG to HIGH
-        usleep(20); // Short pulse
-        gpioClear0(gpio, TRIG); // Clear TRIG bits
-
-        uint32_t timeout = 1000000;
-
-        while (gpioLevel0(gpio, ECHO) == 0 && timeout > 0){ // Wait for ECHO level to change
-            timeout--;
-            usleep(1);
-        } 
-        if (timeout == 0) {
-            printf("Sensor timed out while waiting for ECHO to HIGH\n");
-            continue;
-        }
-
-        startTick = getCurrentTick(); // Get tick at change
-
-        timeout = 1000000;
-        while (gpioLevel0(gpio, ECHO) != 0 && timeout > 0){ // Wait until ECHO level resets to 0
-            timeout--;
-            usleep(1);
-        }
-        if (timeout == 0) {
-            printf("Sensor timed out while waiting for ECHO to LOW\n");
-            continue;
-        }
-        endTick = getCurrentTick(); // Get tick after ECHO is received
-
-        uint32_t duration = endTick - startTick; // Formula for calculating distance
-        float distance_cm = duration / 58.8;     // 58.8 (rounded up) is time taken (µs) for sound to travel 1cm at 20c
-
-        if (distance_cm < 1.0 || distance_cm > 200){
-            printf("Invalid distance: %.2f cm \n", distance_cm);
-            gpioClear0(gpio, TRIG);
-            usleep(100000);
-            continue;
-        }
-
-        int numBlink = prox_vibrate / distance_cm;
-        int delay = 40000 * distance_cm;
-        
-        printf("Measurement %d\nDistance: %.2f cm\n\n", i + 1, distance_cm);
-        
-        if (distance_cm < prox_vibrate) {
-            for (int j = 0; j < numBlink; j++) {
-                pid_t pid = fork();
-                if (pid == 0) {
-                    char count_str[16];
-                    char duration_str[16];
-                    char delay_str[16];
-            
-                    float delay_sec = delay / 1000000.0f;  // Convert microseconds to seconds
-            
-                    snprintf(count_str, sizeof(count_str), "%d", numBlink);
-                    snprintf(duration_str, sizeof(duration_str), "%.2f", delay_sec);
-                    snprintf(delay_str, sizeof(delay_str), "%.2f", delay_sec);
-            
-                    execl("./builds/vibrate", "./builds/vibrate", count_str, duration_str, delay_str, (char*)NULL);
-            
-                    perror("execl failed");
-                    _exit(1);
-                } else if (pid > 0) {
-                    gpioSet0(gpio, RED_LED); // Flash LED and vibrate motor when within proximity to the sensor corresponding to the distance, quickens as the distance decreases
-                    usleep(delay);
-                    gpioClear0(gpio, RED_LED);
-                } else {
-                    perror("Fork failed");
-                }
-                usleep(delay);
-            }
-        }
-
-        if (distance_cm < prox_yellow_led){
-            gpioSet0(gpio, YELLOW_LED);
+        // 2. Process Data and Provide Feedback
+        if (distance > 1.0 && distance < 200.0) { // Filter out invalid readings
+            printf("Distance: %.2f cm\n", distance);
+            feedback_update(&state, distance);
         } else {
-            gpioClear0(gpio, YELLOW_LED);
+            // If distance is invalid, ensure feedback is off
+            gpioClear0(state.gpio, RED_LED);
+            gpioClear0(state.gpio, YELLOW_LED);
         }
-
-        usleep(100000);
+        
+        usleep(100000); // Main loop delay to prevent busy-looping
     }
 
-    gpioClear0(gpio, GREEN_LED); // Turn off green LED
-    gpioClear0(gpio, YELLOW_LED); //Turn off yellow LED in case last reading less than threshold
-    gpioClear0(gpio, RED_LED);
-    gpioClear0(gpio, VIB_MOTOR);
-    munmap((void *)gpio, MEM_BLOCK); // Unmap memory
-    close(fd);                       // Close /dev/gpiomem file
-
+    // Cleanly shut down all systems
+    system_shutdown(&state);
     return 0;
-
 }
