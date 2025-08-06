@@ -8,58 +8,68 @@
 #include "gpio_functions.h"
 #include <errno.h>
 
-#define GPIO_OFFSET 0x0 // Storing /dev/gpiomem in virtual memory via mmap()
-#define MEM_BLOCK 4096  // 4KB memory block for storing register data
-
+#define GPIO_OFFSET 0x0
+#define MEM_BLOCK 4096
 #define VIB_MOTOR 13
+#define LOCK_FILE_PATH "./builds/tmp/vibrate.lock"
 
-int vibrate(int count, double duration, double delay){
+static void perform_vibration_cycle(volatile uint32_t *gpio, int count, int duration_us, int delay_us) {
+    // Set the pin function once before starting the cycle
+    gpioSetFunction(gpio, VIB_MOTOR, 1); // 1 = Output
 
-    int fd = open("/dev/gpiomem", O_RDWR | O_SYNC); // READ & WRITE perms and SYNC to prevent program from continuing before writes are finished
-
-    if (fd < 0)
-    {
-        perror("Access to gpiomem failed\n");
-        return 1;
+    for (int i = 0; i < count; i++) {
+        gpioSet0(gpio, VIB_MOTOR);
+        usleep(duration_us);
+        gpioClear0(gpio, VIB_MOTOR);
+        usleep(delay_us);
     }
+}
 
-    // 32 bit pointer to gpiomem for manipulating GPIO register via mmap()
-    volatile uint32_t *gpio = mmap(NULL,                   // Kernel chooses virtual memory address
-                                   MEM_BLOCK,              // Size of data to be mapped
-                                   PROT_READ | PROT_WRITE, // Allows data to be read and written to
-                                   MAP_SHARED,             // Other processes can use data
-                                   fd,                     // File descriptor (gpiomem)
-                                   GPIO_OFFSET);           // Start of GPIO address within gpiomem (0x0)
-
-    if (gpio == MAP_FAILED){
-        perror("Failed to map gpio registers\n");
-        close(fd);
-        return 1;
-    }
-
-    int lock_fd = open("./builds/tmp/vibrate.lock", O_CREAT | O_RDWR, 0666);
+int vibrate(int count, double duration_s, double delay_s) {
+    // Acquire a lock first to prevent multiple instances from using the hardware.
+    int lock_fd = open(LOCK_FILE_PATH, O_CREAT | O_RDWR, 0666);
     if (lock_fd < 0) {
         perror("Cannot open lock file");
         return 1;
     }
+
+    // Try to get an exclusive, non-blocking lock.
     if (flock(lock_fd, LOCK_EX | LOCK_NB) < 0) {
+        if (errno == EWOULDBLOCK) {
+            // This is not an error. Another process is already vibrating.
+            fprintf(stderr, "Vibrator already active. Exiting.\n");
+            close(lock_fd);
+            return 0; // Exit successfully
+        }
+        perror("flock failed");
         close(lock_fd);
-        return 0;
+        return 1;
     }
 
-    gpioSetFunction(gpio, VIB_MOTOR, 0b001);
-
-    for (int i = 0; i < count; i++){
-        gpioSet0(gpio, VIB_MOTOR);
-        usleep((int)(duration * 1000000));
-        gpioClear0(gpio, VIB_MOTOR);
-        usleep((int)(delay * 1000000));
+    int gpio_fd = open("/dev/gpiomem", O_RDWR | O_SYNC);
+    if (gpio_fd < 0) {
+        perror("Access to gpiomem failed");
+        flock(lock_fd, LOCK_UN); // Release lock on failure
+        close(lock_fd);
+        return 1;
     }
 
-    munmap((void *)gpio, MEM_BLOCK); // Unmap memory
-    close(fd);                       // Close /dev/gpiomem file
+    volatile uint32_t *gpio = mmap(NULL, MEM_BLOCK, PROT_READ | PROT_WRITE, MAP_SHARED, gpio_fd, GPIO_OFFSET);
+    if (gpio == MAP_FAILED) {
+        perror("Failed to map gpio registers");
+        close(gpio_fd);
+        flock(lock_fd, LOCK_UN);
+        close(lock_fd);
+        return 1;
+    }
+
+    perform_vibration_cycle(gpio, count, (int)(duration_s * 1000000), (int)(delay_s * 1000000));
+
+    munmap((void *)gpio, MEM_BLOCK);
+    close(gpio_fd);
     flock(lock_fd, LOCK_UN);
     close(lock_fd);
+    
     return 0;
 }
 
