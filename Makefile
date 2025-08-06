@@ -14,7 +14,7 @@ GPIO_TEST_TARGET = builds/test_gpio_runner
 LOGIC_TEST_TARGET = builds/test_logic_runner
 
 # Source files
-C_SOURCES = src/sys_controller.c src/utils/tick.c src/utils/gpio_functions.c src/utils/config_db.c
+C_SOURCES = src/sys_controller.c src/utils/*.c
 VIB_SOURCES = src/vibrate.c src/utils/gpio_functions.c
 CLI_TEST_SOURCES = test/test_cli_runner.c test/test_cli_vibrate.c test/mocks/vibrate_mock.c test/framework/unity.c
 DB_TEST_SOURCES = test/test_db_runner.c test/test_db_config.c src/utils/config_db.c test/framework/unity.c
