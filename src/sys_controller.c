@@ -51,7 +51,7 @@ int main() {
         float distance = ultrasonic_get_distance_cm(state.gpio);
 
         // 2. Process Data and Provide Feedback
-        if (distance > 1.0 && distance < 200.0) { // Filter out invalid readings
+        if (distance > 2.0 && distance < 200.0) { // Filter out invalid readings
             printf("Distance: %.2f cm\n", distance);
             feedback_update(&state, distance);
         } else {

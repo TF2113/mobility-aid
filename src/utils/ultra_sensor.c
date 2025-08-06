@@ -1,7 +1,7 @@
 #include "ultra_sensor.h"
 #include "sys_logic.h" // For TRIG/ECHO pin definitions
-#include "../include/tick.h"
-#include "../include/gpio_functions.h"
+#include "tick.h"
+#include "gpio_functions.h"
 #include <unistd.h>
 #include <stdio.h>
 
