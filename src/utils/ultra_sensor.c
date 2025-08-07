@@ -5,10 +5,13 @@
 #include <unistd.h>
 #include <stdio.h>
 
-static float duration_to_distance(uint32_t duration_us) {
-    // Speed of sound is approx. 343 m/s or 29.15 us/cm.
-    // The pulse travels there and back, so we divide by 2.
-    // 29.15 * 2 = 58.3. We use 58.8 as per the original code.
+#ifdef TEST
+#define SENSOR_TIMEOUT_ITERATIONS 50 
+#else
+#define SENSOR_TIMEOUT_ITERATIONS 1000000
+#endif
+
+float duration_to_distance(uint32_t duration_us) {
     const float US_TO_CM_DIVISOR = 58.8;
     return (float)duration_us / US_TO_CM_DIVISOR;
 }
@@ -16,10 +19,10 @@ static float duration_to_distance(uint32_t duration_us) {
 float ultrasonic_get_distance_cm(volatile uint32_t *gpio) {
     // 1. Send Trigger Pulse
     gpioSet0(gpio, TRIG);
-    usleep(20); // 20 microsecond pulse
+    usleep(20);
     gpioClear0(gpio, TRIG);
 
-    uint32_t timeout_counter = 1000000; // 1 second timeout for loops
+    uint32_t timeout_counter = SENSOR_TIMEOUT_ITERATIONS;
 
     // 2. Wait for Echo to go HIGH
     while (gpioLevel0(gpio, ECHO) == 0) {
@@ -31,8 +34,10 @@ float ultrasonic_get_distance_cm(volatile uint32_t *gpio) {
     }
     uint32_t startTick = getCurrentTick();
 
+    // Reset timeout for the second loop
+    timeout_counter = SENSOR_TIMEOUT_ITERATIONS;
+
     // 3. Wait for Echo to go LOW
-    timeout_counter = 1000000;
     while (gpioLevel0(gpio, ECHO) != 0) {
         if (--timeout_counter == 0) {
             printf("Sensor timeout: Waiting for ECHO LOW\n");
