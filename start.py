@@ -56,28 +56,31 @@ def detect_changes(poll_interval=1):
 
         time.sleep(poll_interval)
 
+def run():
+    change_thread = threading.Thread(target=detect_changes)
+    change_thread.daemon = True  # Allow the thread to exit when the main program exits
+    change_thread.start()
 
-change_thread = threading.Thread(target=detect_changes)
-change_thread.daemon = True  # Allow the thread to exit when the main program exits
-change_thread.start()
-
-server_cmd = ["taskset", "-c", GENERAL_CORES] + LOW_PRIORITY + ["python3", "run_web.py"] 
-server = subprocess.Popen(server_cmd) 
-mobility_cmd = ["taskset", "-c", CRITICAL_CORE, "./builds/mobility_aid"]
-mobility = subprocess.Popen(mobility_cmd)
+    server_cmd = ["taskset", "-c", GENERAL_CORES] + LOW_PRIORITY + ["python3", "run_web.py"] 
+    server = subprocess.Popen(server_cmd) 
+    mobility_cmd = ["taskset", "-c", CRITICAL_CORE, "./builds/mobility_aid"]
+    mobility = subprocess.Popen(mobility_cmd)
  
-try:
-    while True:
-        time.sleep(1)  # Keep the main thread alive while others run
-except KeyboardInterrupt:
-    if os.path.exists(img_path):
-        os.remove(img_path)
-    else:
-        print("Image not found")
-    if server:
-        server.terminate()
-    if mobility:
-        mobility.terminate()
-    if inference:
-        inference.terminate()
-    print("Program terminated.")
+    try:
+        while True:
+            time.sleep(1)  # Keep the main thread alive while others run
+    except KeyboardInterrupt:
+        if os.path.exists(img_path):
+            os.remove(img_path)
+        else:
+            print("Image not found")
+        if server:
+            server.terminate()
+        if mobility:
+            mobility.terminate()
+        if inference:
+            inference.terminate()
+        print("Program terminated.")
+        
+if __name__ == "__main__":
+    run()
