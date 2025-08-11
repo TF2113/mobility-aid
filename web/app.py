@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-# We assume the db functions are in the same directory for this example
 from src.configs.db import get_config_value, set_config_value
 
 def create_app(config=None):
