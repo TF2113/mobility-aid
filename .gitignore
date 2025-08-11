@@ -3,3 +3,5 @@
 /src/configs/config.*
 /web/__pycache__
 /test/framework
+/test/python/__pycache__
+/test/__pycache__
