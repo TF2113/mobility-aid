@@ -1,5 +1,7 @@
 /builds
 /.vscode
+/__pycache__
+/.pytest_cache
 /src/configs/config.*
 /web/__pycache__
 /test/framework
