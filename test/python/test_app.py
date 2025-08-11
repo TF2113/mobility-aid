@@ -22,14 +22,25 @@ def mock_db(mocker):
 
 def test_dashboard_get(client, mock_db):
     mock_get, _ = mock_db
-    mock_get.side_effect = [15, 25, "true"]
+    mock_get.side_effect = [20, 30, "false"]
+
+    response = client.get(url_for("dashboard"))
+    assert response.status_code == 200
+    assert b'<h1 class="title">Huia Echo</h1>' in response.data
+    assert b'value="20"' in response.data
+    assert b'value="30"' in response.data
+    assert b'name="camera_enabled" value="1" checked' not in response.data
+    
+def test_dashboard_get_default_values_empty_db(client, mock_db):
+    mock_get, _ = mock_db
+    mock_get.return_value = None
 
     response = client.get(url_for("dashboard"))
     assert response.status_code == 200
     assert b'<h1 class="title">Huia Echo</h1>' in response.data
     assert b'value="15"' in response.data
     assert b'value="25"' in response.data
-    assert b'name="camera_enabled" value="1"' in response.data
+    assert b'name="camera_enabled" value="1" checked' in response.data    
 
 def test_dashboard_post_success(client, mock_db):
     mock_get, mock_set = mock_db
