@@ -58,7 +58,36 @@ def test_dashboard_post_success(client, mock_db):
     mock_set.assert_any_call("prox_yellow_led", 30)
     mock_set.assert_any_call("camera_enabled", True)
 
-def test_dashboard_post_invalid_distance(client, mock_db):
+def test_dashboard_post_success_camera_disabled(client, mock_db):
+    mock_get, mock_set = mock_db
+    mock_get.return_value = None
+
+    response = client.post(url_for("dashboard"), data={
+        "prox_vibrate": "10",
+        "prox_yellow_led": "20",
+    }, follow_redirects=True)
+
+    assert response.status_code == 200
+    assert b"Configuration updated successfully!" in response.data
+    mock_set.assert_any_call("prox_vibrate", 10)
+    mock_set.assert_any_call("prox_yellow_led", 20)
+    mock_set.assert_any_call("camera_enabled", False)
+
+def test_dashboard_post_equal_values(client, mock_db):
+    mock_get, mock_set = mock_db
+    mock_get.return_value = None
+
+    response = client.post(url_for("dashboard"), data={
+        "prox_vibrate": "15",
+        "prox_yellow_led": "15",
+        "camera_enabled": "on"
+    }, follow_redirects=True)
+
+    assert response.status_code == 200
+    assert b"Intermediate distance must be greater than minimum distance." in response.data
+    mock_set.assert_not_called()
+
+def test_dashboard_post_alert_larger_than_warning(client, mock_db):
     mock_get, mock_set = mock_db
     mock_get.return_value = None
 
@@ -107,3 +136,33 @@ def test_dashboard_post_empty_alert_input(client, mock_db):
 
     assert response.status_code == 200
     assert b"Invalid input: Please ensure values are correct." in response.data
+    
+def test_dashboard_post_handles_value_error(client, mock_db):
+    mock_get, mock_set = mock_db
+    mock_get.return_value = None
+
+    response = client.post(url_for("dashboard"), data={
+        "prox_vibrate": "not-a-number",
+        "prox_yellow_led": "50",
+    }, follow_redirects=True)
+
+    assert response.status_code == 200
+    assert b"Invalid input: Please ensure values are correct." in response.data
+    assert b"invalid literal for int()" in response.data
+    mock_set.assert_not_called()
+    
+def test_dashboard_post_handles_db_exception_on_save(client, mock_db):
+    mock_get, mock_set = mock_db
+    mock_get.return_value = None
+    #Generic Exception message when called.
+    db_error_message = "Database is locked"
+    mock_set.side_effect = Exception(db_error_message)
+
+    response = client.post(url_for("dashboard"), data={
+        "prox_vibrate": "20",
+        "prox_yellow_led": "30",
+    }, follow_redirects=True)
+
+    assert response.status_code == 200
+    assert b"Error updating configuration" in response.data
+    assert db_error_message.encode('utf-8') in response.data
