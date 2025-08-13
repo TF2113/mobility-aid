@@ -17,6 +17,8 @@
 #define GPIO_OFFSET 0x0
 #define MEM_BLOCK 4096
 
+extern volatile bool running;
+
 // Struct to hold application state
 typedef struct {
     volatile uint32_t *gpio;
