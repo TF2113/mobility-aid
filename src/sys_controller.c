@@ -15,11 +15,14 @@ void handle_signal(int sig) {
     running = false;
 }
 
-int main() {
+int main(int argc, char *argv[]) {
     AppState state = {0}; // Zero-initialize the entire state struct
 
+    const char *default_db_path = "./src/configs/config.db";
+    const char *db_path_to_use = (argc > 1) ? argv[1] : default_db_path;
+
     // Initialize all systems
-    if (system_init(&state) != 0) {
+    if (system_init(&state, db_path_to_use) != 0) {
         fprintf(stderr, "Fatal: System initialization failed.\n");
         return 1;
     }
