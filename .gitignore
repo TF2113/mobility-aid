@@ -3,6 +3,7 @@
 /__pycache__
 /.pytest_cache
 /src/configs/config.*
+/src/configs/__pycache__
 /web/__pycache__
 /test/framework
 /test/python/__pycache__
