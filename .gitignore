@@ -2,6 +2,7 @@
 /.vscode
 /__pycache__
 /.pytest_cache
+/src/__pycache__
 /src/configs/config.*
 /src/configs/__pycache__
 /web/__pycache__
