@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-int system_init(AppState *state, char db_path[]) {
+int system_init(AppState *state, const char *db_path) {
     printf("Initializing system...\n");
 
     // Open and validate SQLite database connection
