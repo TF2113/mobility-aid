@@ -29,7 +29,7 @@ typedef struct {
 
 } AppState;
 
-int system_init(AppState *state);
+int system_init(AppState *state, const char *db_path);
 
 void system_shutdown(AppState *state);
 

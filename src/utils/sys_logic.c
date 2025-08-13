@@ -7,11 +7,11 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-int system_init(AppState *state) {
+int system_init(AppState *state, char db_path[]) {
     printf("Initializing system...\n");
 
     // Open and validate SQLite database connection
-    if (sqlite3_open("./src/configs/config.db", &state->db) != SQLITE_OK) {
+    if (sqlite3_open(db_path, &state->db) != SQLITE_OK) {
         fprintf(stderr, "Cannot open DB: %s\n", sqlite3_errmsg(state->db));
         return -1;
     }
