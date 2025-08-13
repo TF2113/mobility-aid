@@ -6,7 +6,6 @@ from ultralytics import YOLO
 
 last_vibrate = 0
 vibrate_cooldown = 1
-
 vibrate_queue = queue.Queue(maxsize=3)
 
 def queue_manager():
@@ -67,8 +66,7 @@ def run_inference(model, image_path: str, count):
                 last_vibrate = now
             else:
                 print("Queue full, discarding new vibration")
-        
-        
+                
 def main():
     model = YOLO('./ml/models/best.pt')
     image_path = './builds/captures/image0.jpg'
@@ -88,6 +86,5 @@ def main():
     vibrate_queue.put(None)
     vib_thread.join()
     
-
 if __name__ == "__main__":
     main()

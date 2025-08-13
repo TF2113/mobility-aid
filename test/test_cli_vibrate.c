@@ -34,7 +34,6 @@ static const char* STDERR_OUTPUT_FILE = "stderr_test.txt";
         TEST_ASSERT_EQUAL_STRING(expected_error_string, err_buffer); \
     } while (0)
 
-
 int cli_vibrate(int argc, char *argv[]);
 
 void test_cli_vibrate_valid_args(void){
