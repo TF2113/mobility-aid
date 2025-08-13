@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker, declarative_base
 
+DB_PATH = "sqlite:///./src/configs/config.db"
 Base = declarative_base()
 
 class Config(Base):
@@ -9,7 +10,7 @@ class Config(Base):
     key = Column(String, unique=True, nullable=False)
     value = Column(String, nullable=False)
     
-engine = create_engine("sqlite:///./src/configs/config.db")
+engine = create_engine(DB_PATH)
 Session = sessionmaker(bind=engine)
 session = Session()
 Base.metadata.create_all(engine)
