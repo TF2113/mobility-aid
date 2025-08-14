@@ -10,7 +10,7 @@ def full_system_runner():
     start_process = None
     try:
         env = os.environ.copy()
-        env["MOBILITY_AID_EXECUTABLE"] = "./builds/mobility_aid_e2e"
+        env["MOBILITY_AID_EXECUTABLE"] = "./builds/mobility_aid_testable"
 
         print("\n Starting E2E System ")
         start_process = subprocess.Popen(
