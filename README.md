@@ -37,6 +37,8 @@ mobility-aid/
 │   └── models/
 │       └── best.pt           # Trained YOLOv11n model weights
 │
+├── test/                     # Test cases, mocks and framework files for testing C & Python
+│
 ├── web/                      # Web interface (Flask app)
 │   └── app.py                # Local dashboard
 │
@@ -88,4 +90,5 @@ mobility-aid/
 - Vibration motor or buzzer
 
 ---
+
 
