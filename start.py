@@ -63,7 +63,8 @@ def run():
 
     server_cmd = ["taskset", "-c", GENERAL_CORES] + LOW_PRIORITY + ["python3", "run_web.py"] 
     server = subprocess.Popen(server_cmd) 
-    mobility_cmd = ["taskset", "-c", CRITICAL_CORE, "./builds/mobility_aid"]
+    mobility_executable = os.environ.get("MOBILITY_AID_EXECUTABLE", "./builds/mobility_aid")
+    mobility_cmd = ["taskset", "-c", CRITICAL_CORE, mobility_executable]
     mobility = subprocess.Popen(mobility_cmd)
  
     try:
