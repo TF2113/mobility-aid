@@ -1,0 +1,616 @@
+Ultralytics 8.3.163 🚀 Python-3.11.2 torch-2.7.1+cpu CPU (Cortex-A72)
+YOLO11n summary (fused): 100 layers, 2,583,322 parameters, 0 gradients, 6.3 GFLOPs
+
+video 1/1 (frame 1/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 814.9ms
+video 1/1 (frame 2/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 783.2ms
+video 1/1 (frame 3/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 769.5ms
+video 1/1 (frame 4/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 779.6ms
+video 1/1 (frame 5/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 791.6ms
+video 1/1 (frame 6/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 800.3ms
+video 1/1 (frame 7/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 776.0ms
+video 1/1 (frame 8/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 784.8ms
+video 1/1 (frame 9/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 783.4ms
+video 1/1 (frame 10/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 781.0ms
+video 1/1 (frame 11/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 774.3ms
+video 1/1 (frame 12/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 770.1ms
+video 1/1 (frame 13/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 780.7ms
+video 1/1 (frame 14/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 772.4ms
+video 1/1 (frame 15/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 781.3ms
+video 1/1 (frame 16/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 806.6ms
+video 1/1 (frame 17/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 787.7ms
+video 1/1 (frame 18/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 789.1ms
+video 1/1 (frame 19/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 788.2ms
+video 1/1 (frame 20/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 781.9ms
+video 1/1 (frame 21/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 792.1ms
+video 1/1 (frame 22/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 785.9ms
+video 1/1 (frame 23/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 789.4ms
+video 1/1 (frame 24/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 790.3ms
+video 1/1 (frame 25/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 783.0ms
+video 1/1 (frame 26/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 791.4ms
+video 1/1 (frame 27/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 794.0ms
+video 1/1 (frame 28/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 782.3ms
+video 1/1 (frame 29/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 802.8ms
+video 1/1 (frame 30/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 792.5ms
+video 1/1 (frame 31/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 781.7ms
+video 1/1 (frame 32/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 791.0ms
+video 1/1 (frame 33/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 796.6ms
+video 1/1 (frame 34/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 781.5ms
+video 1/1 (frame 35/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 780.5ms
+video 1/1 (frame 36/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 770.1ms
+video 1/1 (frame 37/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 780.8ms
+video 1/1 (frame 38/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 779.4ms
+video 1/1 (frame 39/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 790.5ms
+video 1/1 (frame 40/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 785.9ms
+video 1/1 (frame 41/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 776.7ms
+video 1/1 (frame 42/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 826.5ms
+video 1/1 (frame 43/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 774.0ms
+video 1/1 (frame 44/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 807.5ms
+video 1/1 (frame 45/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 782.0ms
+video 1/1 (frame 46/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 795.7ms
+video 1/1 (frame 47/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 791.4ms
+video 1/1 (frame 48/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 799.0ms
+video 1/1 (frame 49/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 779.4ms
+video 1/1 (frame 50/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 769.1ms
+video 1/1 (frame 51/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 767.6ms
+video 1/1 (frame 52/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 779.6ms
+video 1/1 (frame 53/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 780.0ms
+video 1/1 (frame 54/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 777.6ms
+video 1/1 (frame 55/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 783.9ms
+video 1/1 (frame 56/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 784.4ms
+video 1/1 (frame 57/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 776.0ms
+video 1/1 (frame 58/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 776.7ms
+video 1/1 (frame 59/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 778.5ms
+video 1/1 (frame 60/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_greens, 787.2ms
+video 1/1 (frame 61/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 788.3ms
+video 1/1 (frame 62/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 823.8ms
+video 1/1 (frame 63/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 784.1ms
+video 1/1 (frame 64/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 798.6ms
+video 1/1 (frame 65/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 790.7ms
+video 1/1 (frame 66/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 783.5ms
+video 1/1 (frame 67/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 784.6ms
+video 1/1 (frame 68/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 768.9ms
+video 1/1 (frame 69/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 782.8ms
+video 1/1 (frame 70/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 784.6ms
+video 1/1 (frame 71/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 772.5ms
+video 1/1 (frame 72/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 790.0ms
+video 1/1 (frame 73/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 779.2ms
+video 1/1 (frame 74/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 775.2ms
+video 1/1 (frame 75/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 779.3ms
+video 1/1 (frame 76/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 780.9ms
+video 1/1 (frame 77/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 786.0ms
+video 1/1 (frame 78/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 771.9ms
+video 1/1 (frame 79/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 771.1ms
+video 1/1 (frame 80/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 776.7ms
+video 1/1 (frame 81/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 811.5ms
+video 1/1 (frame 82/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 794.3ms
+video 1/1 (frame 83/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 781.3ms
+video 1/1 (frame 84/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 799.6ms
+video 1/1 (frame 85/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 774.0ms
+video 1/1 (frame 86/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 785.9ms
+video 1/1 (frame 87/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 785.8ms
+video 1/1 (frame 88/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 778.1ms
+video 1/1 (frame 89/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 776.6ms
+video 1/1 (frame 90/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 786.2ms
+video 1/1 (frame 91/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 781.5ms
+video 1/1 (frame 92/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 786.5ms
+video 1/1 (frame 93/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_greens, 770.1ms
+video 1/1 (frame 94/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_greens, 770.4ms
+video 1/1 (frame 95/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 786.7ms
+video 1/1 (frame 96/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 770.7ms
+video 1/1 (frame 97/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 783.5ms
+video 1/1 (frame 98/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 784.2ms
+video 1/1 (frame 99/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 767.9ms
+video 1/1 (frame 100/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 780.9ms
+video 1/1 (frame 101/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 780.7ms
+video 1/1 (frame 102/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 778.9ms
+video 1/1 (frame 103/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 792.9ms
+video 1/1 (frame 104/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 814.5ms
+video 1/1 (frame 105/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 788.1ms
+video 1/1 (frame 106/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 781.7ms
+video 1/1 (frame 107/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 770.8ms
+video 1/1 (frame 108/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 783.8ms
+video 1/1 (frame 109/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 791.9ms
+video 1/1 (frame 110/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 818.5ms
+video 1/1 (frame 111/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 786.7ms
+video 1/1 (frame 112/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 791.1ms
+video 1/1 (frame 113/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 776.8ms
+video 1/1 (frame 114/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 772.9ms
+video 1/1 (frame 115/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 795.4ms
+video 1/1 (frame 116/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 782.5ms
+video 1/1 (frame 117/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 781.3ms
+video 1/1 (frame 118/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 798.9ms
+video 1/1 (frame 119/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 804.9ms
+video 1/1 (frame 120/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 797.5ms
+video 1/1 (frame 121/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 799.7ms
+video 1/1 (frame 122/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 800.3ms
+video 1/1 (frame 123/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 796.9ms
+video 1/1 (frame 124/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 782.2ms
+video 1/1 (frame 125/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 793.8ms
+video 1/1 (frame 126/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 791.6ms
+video 1/1 (frame 127/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 815.4ms
+video 1/1 (frame 128/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 803.4ms
+video 1/1 (frame 129/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 791.6ms
+video 1/1 (frame 130/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 788.3ms
+video 1/1 (frame 131/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 799.6ms
+video 1/1 (frame 132/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 793.7ms
+video 1/1 (frame 133/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 803.8ms
+video 1/1 (frame 134/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 804.0ms
+video 1/1 (frame 135/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_greens, 799.2ms
+video 1/1 (frame 136/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 796.6ms
+video 1/1 (frame 137/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 798.2ms
+video 1/1 (frame 138/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 797.6ms
+video 1/1 (frame 139/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 817.0ms
+video 1/1 (frame 140/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 810.1ms
+video 1/1 (frame 141/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_greens, 787.8ms
+video 1/1 (frame 142/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 798.7ms
+video 1/1 (frame 143/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 806.7ms
+video 1/1 (frame 144/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 799.3ms
+video 1/1 (frame 145/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 805.7ms
+video 1/1 (frame 146/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 795.1ms
+video 1/1 (frame 147/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 795.5ms
+video 1/1 (frame 148/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 824.0ms
+video 1/1 (frame 149/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 806.3ms
+video 1/1 (frame 150/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 803.3ms
+video 1/1 (frame 151/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 814.2ms
+video 1/1 (frame 152/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 799.8ms
+video 1/1 (frame 153/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 803.6ms
+video 1/1 (frame 154/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 818.3ms
+video 1/1 (frame 155/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 800.4ms
+video 1/1 (frame 156/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 834.7ms
+video 1/1 (frame 157/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 795.2ms
+video 1/1 (frame 158/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 796.7ms
+video 1/1 (frame 159/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 808.4ms
+video 1/1 (frame 160/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 781.1ms
+video 1/1 (frame 161/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 792.1ms
+video 1/1 (frame 162/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 775.7ms
+video 1/1 (frame 163/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 796.7ms
+video 1/1 (frame 164/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 790.4ms
+video 1/1 (frame 165/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 807.5ms
+video 1/1 (frame 166/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 792.5ms
+video 1/1 (frame 167/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 797.7ms
+video 1/1 (frame 168/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 794.0ms
+video 1/1 (frame 169/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 798.9ms
+video 1/1 (frame 170/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 823.2ms
+video 1/1 (frame 171/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 778.2ms
+video 1/1 (frame 172/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 796.5ms
+video 1/1 (frame 173/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 809.1ms
+video 1/1 (frame 174/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 798.9ms
+video 1/1 (frame 175/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 799.6ms
+video 1/1 (frame 176/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 806.2ms
+video 1/1 (frame 177/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 793.7ms
+video 1/1 (frame 178/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 828.1ms
+video 1/1 (frame 179/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 807.6ms
+video 1/1 (frame 180/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 795.2ms
+video 1/1 (frame 181/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 802.2ms
+video 1/1 (frame 182/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 797.1ms
+video 1/1 (frame 183/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 788.4ms
+video 1/1 (frame 184/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 797.5ms
+video 1/1 (frame 185/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 798.1ms
+video 1/1 (frame 186/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 800.9ms
+video 1/1 (frame 187/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 788.2ms
+video 1/1 (frame 188/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 798.3ms
+video 1/1 (frame 189/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 793.9ms
+video 1/1 (frame 190/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 791.1ms
+video 1/1 (frame 191/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 797.9ms
+video 1/1 (frame 192/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 801.2ms
+video 1/1 (frame 193/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 781.1ms
+video 1/1 (frame 194/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 799.3ms
+video 1/1 (frame 195/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 800.5ms
+video 1/1 (frame 196/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 808.7ms
+video 1/1 (frame 197/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 794.9ms
+video 1/1 (frame 198/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 796.4ms
+video 1/1 (frame 199/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 797.3ms
+video 1/1 (frame 200/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 797.7ms
+video 1/1 (frame 201/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 792.0ms
+video 1/1 (frame 202/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 797.4ms
+video 1/1 (frame 203/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 794.8ms
+video 1/1 (frame 204/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 806.3ms
+video 1/1 (frame 205/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 799.9ms
+video 1/1 (frame 206/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 796.3ms
+video 1/1 (frame 207/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 799.4ms
+video 1/1 (frame 208/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 786.3ms
+video 1/1 (frame 209/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 807.6ms
+video 1/1 (frame 210/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 803.7ms
+video 1/1 (frame 211/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 793.9ms
+video 1/1 (frame 212/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 792.5ms
+video 1/1 (frame 213/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 807.4ms
+video 1/1 (frame 214/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 799.6ms
+video 1/1 (frame 215/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 807.6ms
+video 1/1 (frame 216/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 813.8ms
+video 1/1 (frame 217/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 795.3ms
+video 1/1 (frame 218/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 816.4ms
+video 1/1 (frame 219/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 783.3ms
+video 1/1 (frame 220/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 800.5ms
+video 1/1 (frame 221/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_greens, 792.6ms
+video 1/1 (frame 222/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_greens, 811.6ms
+video 1/1 (frame 223/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 800.3ms
+video 1/1 (frame 224/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 802.6ms
+video 1/1 (frame 225/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 833.4ms
+video 1/1 (frame 226/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 817.0ms
+video 1/1 (frame 227/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 800.4ms
+video 1/1 (frame 228/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 784.9ms
+video 1/1 (frame 229/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 801.7ms
+video 1/1 (frame 230/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 808.1ms
+video 1/1 (frame 231/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_greens, 790.3ms
+video 1/1 (frame 232/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 788.7ms
+video 1/1 (frame 233/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 818.6ms
+video 1/1 (frame 234/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 801.6ms
+video 1/1 (frame 235/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 801.6ms
+video 1/1 (frame 236/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 801.4ms
+video 1/1 (frame 237/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 791.1ms
+video 1/1 (frame 238/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 791.8ms
+video 1/1 (frame 239/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 806.8ms
+video 1/1 (frame 240/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 799.5ms
+video 1/1 (frame 241/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 790.8ms
+video 1/1 (frame 242/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 791.3ms
+video 1/1 (frame 243/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 799.4ms
+video 1/1 (frame 244/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 805.5ms
+video 1/1 (frame 245/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 787.0ms
+video 1/1 (frame 246/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 807.8ms
+video 1/1 (frame 247/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 806.5ms
+video 1/1 (frame 248/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 788.5ms
+video 1/1 (frame 249/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 792.8ms
+video 1/1 (frame 250/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 800.0ms
+video 1/1 (frame 251/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 787.7ms
+video 1/1 (frame 252/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 800.6ms
+video 1/1 (frame 253/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 798.2ms
+video 1/1 (frame 254/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 802.7ms
+video 1/1 (frame 255/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 799.5ms
+video 1/1 (frame 256/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 807.4ms
+video 1/1 (frame 257/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 816.1ms
+video 1/1 (frame 258/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_greens, 800.2ms
+video 1/1 (frame 259/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_greens, 798.5ms
+video 1/1 (frame 260/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_green, 821.3ms
+video 1/1 (frame 261/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_greens, 815.7ms
+video 1/1 (frame 262/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_greens, 793.9ms
+video 1/1 (frame 263/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 784.0ms
+video 1/1 (frame 264/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 791.5ms
+video 1/1 (frame 265/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 813.0ms
+video 1/1 (frame 266/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 835.3ms
+video 1/1 (frame 267/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_greens, 789.9ms
+video 1/1 (frame 268/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 796.6ms
+video 1/1 (frame 269/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 796.7ms
+video 1/1 (frame 270/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 797.6ms
+video 1/1 (frame 271/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 788.8ms
+video 1/1 (frame 272/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 816.9ms
+video 1/1 (frame 273/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 799.3ms
+video 1/1 (frame 274/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 801.6ms
+video 1/1 (frame 275/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 807.9ms
+video 1/1 (frame 276/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 806.4ms
+video 1/1 (frame 277/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 831.8ms
+video 1/1 (frame 278/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 825.7ms
+video 1/1 (frame 279/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 809.3ms
+video 1/1 (frame 280/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 789.8ms
+video 1/1 (frame 281/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 883.5ms
+video 1/1 (frame 282/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 1121.0ms
+video 1/1 (frame 283/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 943.1ms
+video 1/1 (frame 284/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 1060.2ms
+video 1/1 (frame 285/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 821.3ms
+video 1/1 (frame 286/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 815.2ms
+video 1/1 (frame 287/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 839.1ms
+video 1/1 (frame 288/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 792.8ms
+video 1/1 (frame 289/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 793.1ms
+video 1/1 (frame 290/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 789.4ms
+video 1/1 (frame 291/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 811.0ms
+video 1/1 (frame 292/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 790.0ms
+video 1/1 (frame 293/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 799.0ms
+video 1/1 (frame 294/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 799.2ms
+video 1/1 (frame 295/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 806.7ms
+video 1/1 (frame 296/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 804.1ms
+video 1/1 (frame 297/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 810.5ms
+video 1/1 (frame 298/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 810.9ms
+video 1/1 (frame 299/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 798.1ms
+video 1/1 (frame 300/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 805.2ms
+video 1/1 (frame 301/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 825.1ms
+video 1/1 (frame 302/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 814.8ms
+video 1/1 (frame 303/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 840.1ms
+video 1/1 (frame 304/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 800.7ms
+video 1/1 (frame 305/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 803.8ms
+video 1/1 (frame 306/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 810.0ms
+video 1/1 (frame 307/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 795.4ms
+video 1/1 (frame 308/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 792.9ms
+video 1/1 (frame 309/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 796.1ms
+video 1/1 (frame 310/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 799.5ms
+video 1/1 (frame 311/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 802.0ms
+video 1/1 (frame 312/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 796.6ms
+video 1/1 (frame 313/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 807.2ms
+video 1/1 (frame 314/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 798.4ms
+video 1/1 (frame 315/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 805.1ms
+video 1/1 (frame 316/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 816.3ms
+video 1/1 (frame 317/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 775.4ms
+video 1/1 (frame 318/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 794.1ms
+video 1/1 (frame 319/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 802.8ms
+video 1/1 (frame 320/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 815.5ms
+video 1/1 (frame 321/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 802.0ms
+video 1/1 (frame 322/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 805.9ms
+video 1/1 (frame 323/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 801.7ms
+video 1/1 (frame 324/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 794.5ms
+video 1/1 (frame 325/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 812.6ms
+video 1/1 (frame 326/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 800.8ms
+video 1/1 (frame 327/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 819.5ms
+video 1/1 (frame 328/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 795.5ms
+video 1/1 (frame 329/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 795.7ms
+video 1/1 (frame 330/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 789.8ms
+video 1/1 (frame 331/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 789.0ms
+video 1/1 (frame 332/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 806.8ms
+video 1/1 (frame 333/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 796.1ms
+video 1/1 (frame 334/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 797.2ms
+video 1/1 (frame 335/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 809.0ms
+video 1/1 (frame 336/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 784.5ms
+video 1/1 (frame 337/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 795.5ms
+video 1/1 (frame 338/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 817.8ms
+video 1/1 (frame 339/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 811.8ms
+video 1/1 (frame 340/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 824.4ms
+video 1/1 (frame 341/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 819.2ms
+video 1/1 (frame 342/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 831.8ms
+video 1/1 (frame 343/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 812.4ms
+video 1/1 (frame 344/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 798.1ms
+video 1/1 (frame 345/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 794.9ms
+video 1/1 (frame 346/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 804.5ms
+video 1/1 (frame 347/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 793.8ms
+video 1/1 (frame 348/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 812.7ms
+video 1/1 (frame 349/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 819.3ms
+video 1/1 (frame 350/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 807.8ms
+video 1/1 (frame 351/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 806.8ms
+video 1/1 (frame 352/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 792.5ms
+video 1/1 (frame 353/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 787.6ms
+video 1/1 (frame 354/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 802.3ms
+video 1/1 (frame 355/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 785.8ms
+video 1/1 (frame 356/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 802.7ms
+video 1/1 (frame 357/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 790.1ms
+video 1/1 (frame 358/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 789.0ms
+video 1/1 (frame 359/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_reds, 808.5ms
+video 1/1 (frame 360/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 3 traffic_reds, 801.8ms
+video 1/1 (frame 361/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 809.9ms
+video 1/1 (frame 362/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 3 traffic_reds, 850.9ms
+video 1/1 (frame 363/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 3 traffic_reds, 792.0ms
+video 1/1 (frame 364/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 792.6ms
+video 1/1 (frame 365/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 785.4ms
+video 1/1 (frame 366/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 797.3ms
+video 1/1 (frame 367/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 831.4ms
+video 1/1 (frame 368/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 828.6ms
+video 1/1 (frame 369/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 804.9ms
+video 1/1 (frame 370/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 799.9ms
+video 1/1 (frame 371/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 801.9ms
+video 1/1 (frame 372/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 822.7ms
+video 1/1 (frame 373/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 798.0ms
+video 1/1 (frame 374/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 795.0ms
+video 1/1 (frame 375/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 795.7ms
+video 1/1 (frame 376/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 785.9ms
+video 1/1 (frame 377/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 803.8ms
+video 1/1 (frame 378/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 814.1ms
+video 1/1 (frame 379/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 798.5ms
+video 1/1 (frame 380/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 789.8ms
+video 1/1 (frame 381/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 834.8ms
+video 1/1 (frame 382/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 ped_reds, 2 traffic_reds, 798.2ms
+video 1/1 (frame 383/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_reds, 833.0ms
+video 1/1 (frame 384/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 817.3ms
+video 1/1 (frame 385/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 3 traffic_reds, 824.7ms
+video 1/1 (frame 386/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 3 traffic_reds, 814.7ms
+video 1/1 (frame 387/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 3 traffic_reds, 792.0ms
+video 1/1 (frame 388/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 3 traffic_reds, 807.6ms
+video 1/1 (frame 389/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 3 traffic_reds, 826.0ms
+video 1/1 (frame 390/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 3 traffic_reds, 796.7ms
+video 1/1 (frame 391/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 3 traffic_reds, 800.9ms
+video 1/1 (frame 392/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 3 traffic_reds, 808.0ms
+video 1/1 (frame 393/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 3 traffic_reds, 796.5ms
+video 1/1 (frame 394/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 3 traffic_reds, 800.8ms
+video 1/1 (frame 395/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 3 traffic_reds, 814.4ms
+video 1/1 (frame 396/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 3 traffic_reds, 791.2ms
+video 1/1 (frame 397/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_reds, 797.9ms
+video 1/1 (frame 398/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_reds, 795.0ms
+video 1/1 (frame 399/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 2 traffic_reds, 799.4ms
+video 1/1 (frame 400/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 781.7ms
+video 1/1 (frame 401/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 805.6ms
+video 1/1 (frame 402/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 793.8ms
+video 1/1 (frame 403/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_reds, 790.3ms
+video 1/1 (frame 404/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 799.5ms
+video 1/1 (frame 405/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 809.7ms
+video 1/1 (frame 406/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 827.9ms
+video 1/1 (frame 407/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 2 traffic_reds, 786.1ms
+video 1/1 (frame 408/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 1 traffic_red, 799.0ms
+video 1/1 (frame 409/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 1 traffic_red, 802.0ms
+video 1/1 (frame 410/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 1 traffic_red, 807.7ms
+video 1/1 (frame 411/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 1 traffic_red, 810.0ms
+video 1/1 (frame 412/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 1 traffic_red, 799.2ms
+video 1/1 (frame 413/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 1 traffic_red, 812.4ms
+video 1/1 (frame 414/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 1 traffic_red, 790.1ms
+video 1/1 (frame 415/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 1 traffic_red, 785.5ms
+video 1/1 (frame 416/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_green, 1 traffic_red, 815.5ms
+video 1/1 (frame 417/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 820.4ms
+video 1/1 (frame 418/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 800.6ms
+video 1/1 (frame 419/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 802.4ms
+video 1/1 (frame 420/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 823.5ms
+video 1/1 (frame 421/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 805.4ms
+video 1/1 (frame 422/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 788.3ms
+video 1/1 (frame 423/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 801.3ms
+video 1/1 (frame 424/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 784.8ms
+video 1/1 (frame 425/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 804.2ms
+video 1/1 (frame 426/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 800.2ms
+video 1/1 (frame 427/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 803.1ms
+video 1/1 (frame 428/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 809.0ms
+video 1/1 (frame 429/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 795.9ms
+video 1/1 (frame 430/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 795.1ms
+video 1/1 (frame 431/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 816.8ms
+video 1/1 (frame 432/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 806.5ms
+video 1/1 (frame 433/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 826.9ms
+video 1/1 (frame 434/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 811.3ms
+video 1/1 (frame 435/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 808.5ms
+video 1/1 (frame 436/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 793.0ms
+video 1/1 (frame 437/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 813.0ms
+video 1/1 (frame 438/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 800.6ms
+video 1/1 (frame 439/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 810.0ms
+video 1/1 (frame 440/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 818.0ms
+video 1/1 (frame 441/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 807.6ms
+video 1/1 (frame 442/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 798.3ms
+video 1/1 (frame 443/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 805.0ms
+video 1/1 (frame 444/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 794.3ms
+video 1/1 (frame 445/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 813.0ms
+video 1/1 (frame 446/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 783.9ms
+video 1/1 (frame 447/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 790.1ms
+video 1/1 (frame 448/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 795.8ms
+video 1/1 (frame 449/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 800.8ms
+video 1/1 (frame 450/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 803.6ms
+video 1/1 (frame 451/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 815.0ms
+video 1/1 (frame 452/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 794.2ms
+video 1/1 (frame 453/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 806.7ms
+video 1/1 (frame 454/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 789.7ms
+video 1/1 (frame 455/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 801.0ms
+video 1/1 (frame 456/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 803.4ms
+video 1/1 (frame 457/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 816.9ms
+video 1/1 (frame 458/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 795.8ms
+video 1/1 (frame 459/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 798.3ms
+video 1/1 (frame 460/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 794.8ms
+video 1/1 (frame 461/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 791.7ms
+video 1/1 (frame 462/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 803.8ms
+video 1/1 (frame 463/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 800.2ms
+video 1/1 (frame 464/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 790.8ms
+video 1/1 (frame 465/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 805.0ms
+video 1/1 (frame 466/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 803.3ms
+video 1/1 (frame 467/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 826.3ms
+video 1/1 (frame 468/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 800.5ms
+video 1/1 (frame 469/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 812.3ms
+video 1/1 (frame 470/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 805.1ms
+video 1/1 (frame 471/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 794.7ms
+video 1/1 (frame 472/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 809.5ms
+video 1/1 (frame 473/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 783.3ms
+video 1/1 (frame 474/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 795.1ms
+video 1/1 (frame 475/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 802.0ms
+video 1/1 (frame 476/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 810.6ms
+video 1/1 (frame 477/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 792.5ms
+video 1/1 (frame 478/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 775.5ms
+video 1/1 (frame 479/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 791.3ms
+video 1/1 (frame 480/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 791.7ms
+video 1/1 (frame 481/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 786.6ms
+video 1/1 (frame 482/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 783.9ms
+video 1/1 (frame 483/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 800.9ms
+video 1/1 (frame 484/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 806.7ms
+video 1/1 (frame 485/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 809.1ms
+video 1/1 (frame 486/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 798.3ms
+video 1/1 (frame 487/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 794.9ms
+video 1/1 (frame 488/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 820.3ms
+video 1/1 (frame 489/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 819.3ms
+video 1/1 (frame 490/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 796.9ms
+video 1/1 (frame 491/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 800.3ms
+video 1/1 (frame 492/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 796.5ms
+video 1/1 (frame 493/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 785.3ms
+video 1/1 (frame 494/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 787.8ms
+video 1/1 (frame 495/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 799.0ms
+video 1/1 (frame 496/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 801.0ms
+video 1/1 (frame 497/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 788.9ms
+video 1/1 (frame 498/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 804.1ms
+video 1/1 (frame 499/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 789.2ms
+video 1/1 (frame 500/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 796.9ms
+video 1/1 (frame 501/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 799.9ms
+video 1/1 (frame 502/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 815.5ms
+video 1/1 (frame 503/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 799.0ms
+video 1/1 (frame 504/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 807.1ms
+video 1/1 (frame 505/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 797.1ms
+video 1/1 (frame 506/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 796.6ms
+video 1/1 (frame 507/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 789.5ms
+video 1/1 (frame 508/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 795.1ms
+video 1/1 (frame 509/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 789.2ms
+video 1/1 (frame 510/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 782.6ms
+video 1/1 (frame 511/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 810.4ms
+video 1/1 (frame 512/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 803.2ms
+video 1/1 (frame 513/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 788.4ms
+video 1/1 (frame 514/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 790.1ms
+video 1/1 (frame 515/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 798.6ms
+video 1/1 (frame 516/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 797.8ms
+video 1/1 (frame 517/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 796.1ms
+video 1/1 (frame 518/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 791.4ms
+video 1/1 (frame 519/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 788.6ms
+video 1/1 (frame 520/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 797.9ms
+video 1/1 (frame 521/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 791.9ms
+video 1/1 (frame 522/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 784.2ms
+video 1/1 (frame 523/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 799.0ms
+video 1/1 (frame 524/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 792.8ms
+video 1/1 (frame 525/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 821.0ms
+video 1/1 (frame 526/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 797.0ms
+video 1/1 (frame 527/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 806.9ms
+video 1/1 (frame 528/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 819.8ms
+video 1/1 (frame 529/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 796.2ms
+video 1/1 (frame 530/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 801.8ms
+video 1/1 (frame 531/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 791.6ms
+video 1/1 (frame 532/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 810.8ms
+video 1/1 (frame 533/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 786.3ms
+video 1/1 (frame 534/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 796.8ms
+video 1/1 (frame 535/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 798.1ms
+video 1/1 (frame 536/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 796.3ms
+video 1/1 (frame 537/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 790.6ms
+video 1/1 (frame 538/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 807.4ms
+video 1/1 (frame 539/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_wait, 1 traffic_red, 799.6ms
+video 1/1 (frame 540/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 830.6ms
+video 1/1 (frame 541/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 799.5ms
+video 1/1 (frame 542/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 814.0ms
+video 1/1 (frame 543/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 797.6ms
+video 1/1 (frame 544/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 806.1ms
+video 1/1 (frame 545/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 815.9ms
+video 1/1 (frame 546/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 807.6ms
+video 1/1 (frame 547/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 812.1ms
+video 1/1 (frame 548/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 830.9ms
+video 1/1 (frame 549/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 803.3ms
+video 1/1 (frame 550/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 796.3ms
+video 1/1 (frame 551/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 788.2ms
+video 1/1 (frame 552/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 796.5ms
+video 1/1 (frame 553/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 794.1ms
+video 1/1 (frame 554/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_wait, 1 traffic_red, 794.5ms
+video 1/1 (frame 555/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 802.6ms
+video 1/1 (frame 556/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 845.8ms
+video 1/1 (frame 557/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 823.2ms
+video 1/1 (frame 558/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 807.7ms
+video 1/1 (frame 559/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_reds, 801.5ms
+video 1/1 (frame 560/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 786.2ms
+video 1/1 (frame 561/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 797.5ms
+video 1/1 (frame 562/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 838.1ms
+video 1/1 (frame 563/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 791.8ms
+video 1/1 (frame 564/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 827.3ms
+video 1/1 (frame 565/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 781.9ms
+video 1/1 (frame 566/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 806.1ms
+video 1/1 (frame 567/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 791.7ms
+video 1/1 (frame 568/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_wait, 2 traffic_reds, 796.8ms
+video 1/1 (frame 569/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 808.3ms
+video 1/1 (frame 570/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 789.6ms
+video 1/1 (frame 571/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 806.4ms
+video 1/1 (frame 572/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 806.4ms
+video 1/1 (frame 573/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 811.3ms
+video 1/1 (frame 574/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 809.5ms
+video 1/1 (frame 575/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 795.2ms
+video 1/1 (frame 576/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 935.0ms
+video 1/1 (frame 577/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 796.0ms
+video 1/1 (frame 578/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 800.5ms
+video 1/1 (frame 579/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 796.7ms
+video 1/1 (frame 580/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 793.3ms
+video 1/1 (frame 581/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_reds, 789.7ms
+video 1/1 (frame 582/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 2 traffic_reds, 824.0ms
+video 1/1 (frame 583/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 817.7ms
+video 1/1 (frame 584/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 801.7ms
+video 1/1 (frame 585/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 ped_red, 1 traffic_red, 806.1ms
+video 1/1 (frame 586/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 957.3ms
+video 1/1 (frame 587/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 947.4ms
+video 1/1 (frame 588/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 2 traffic_reds, 807.9ms
+video 1/1 (frame 589/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 801.0ms
+video 1/1 (frame 590/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 831.0ms
+video 1/1 (frame 591/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 1 traffic_red, 816.8ms
+video 1/1 (frame 592/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 798.8ms
+video 1/1 (frame 593/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 810.9ms
+video 1/1 (frame 594/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 791.4ms
+video 1/1 (frame 595/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 794.8ms
+video 1/1 (frame 596/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 798.1ms
+video 1/1 (frame 597/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 797.8ms
+video 1/1 (frame 598/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 891.8ms
+video 1/1 (frame 599/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 832.9ms
+video 1/1 (frame 600/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 802.8ms
+video 1/1 (frame 601/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 805.9ms
+video 1/1 (frame 602/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 811.0ms
+video 1/1 (frame 603/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 796.5ms
+video 1/1 (frame 604/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 794.0ms
+video 1/1 (frame 605/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 800.3ms
+video 1/1 (frame 606/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 802.5ms
+video 1/1 (frame 607/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 809.6ms
+video 1/1 (frame 608/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 804.2ms
+video 1/1 (frame 609/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 797.1ms
+video 1/1 (frame 610/610) /home/tf2113/Documents/mobility-aid/docs/vids/g-a-r_noaudio.mp4: 384x640 (no detections), 790.0ms
+Speed: 11.4ms preprocess, 801.0ms inference, 2.9ms postprocess per image at shape (1, 3, 384, 640)
+💡 Learn more at https://docs.ultralytics.com/modes/predict
+[34m[1mVS Code:[0m view Ultralytics VS Code Extension ⚡ at https://docs.ultralytics.com/integrations/vscode
